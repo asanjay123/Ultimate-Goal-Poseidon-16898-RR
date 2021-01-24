@@ -18,14 +18,11 @@ public class Teleops extends OpMode {
     DcMotor backRight;
     DcMotor intake;
     DcMotor wobble;
-//    DcMotor shooter;
-    //
-//    Servo flicker;
+    DcMotor shooter;
+
+    Servo flicker;
     Servo claw;
-//    Servo servo2;
-//    Servo hookRight;
-//    Servo hookLeft;
-//    double position;
+
 
     double nitro;
 
@@ -38,9 +35,9 @@ public class Teleops extends OpMode {
 
         intake = hardwareMap.dcMotor.get("ring");
         wobble = hardwareMap.dcMotor.get("wobble");
-//        flicker = hardwareMap.servo.get("pusher");
+        flicker = hardwareMap.servo.get("pusher");
         claw = hardwareMap.servo.get("clamp");
-//        shooter = hardwareMap.dcMotor.get("flywheel");
+        shooter = hardwareMap.dcMotor.get("flywheel");
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         backRight.setDirection(DcMotorSimple.Direction.REVERSE);
 
@@ -58,11 +55,6 @@ public class Teleops extends OpMode {
 //
 //        hookLeft.setPosition(0.3);
 //        hookRight.setPosition(0.3);
-
-
-//
-//        position = servo;
-//        servo.setPosition(position);
 
 
     }
@@ -126,31 +118,28 @@ public class Teleops extends OpMode {
             wobble.setPower(-0.05);
         }
 
-//        Claw controls
+        //Claw controls
         if (gamepad2.x)
             claw.setPosition(0.88);
         if (gamepad2.y)
             claw.setPosition(0.5);
-//
-//        //Shooter controls
-//        if (gamepad2.x) {
-//            shooter.setPower(1);
-//        }
-//        if (gamepad2.y) {
-//            shooter.setPower(0);
-//        }
-//        if (gamepad1.a) {
-//            shooter.setPower(-1);
-//        }
-//
-//        //Flicker settings
-//        if (gamepad2.right_trigger > 0) {
-//            flicker.setPosition(0.6);
-//        }
-//        else {
-//            flicker.setPosition(0.17);
-//        }
-//
+
+        //Shooter controls
+        if (gamepad1.left_bumper) {
+            shooter.setPower(0);
+        }
+        if (gamepad1.right_bumper) {
+            shooter.setPower(-2);
+        }
+
+        //Flicker settings
+        if (gamepad2.right_trigger > 0) {
+            flicker.setPosition(0.6);
+        }
+        else {
+            flicker.setPosition(0.17);
+        }
+
 
 
 //        try {
