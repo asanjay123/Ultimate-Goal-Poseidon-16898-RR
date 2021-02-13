@@ -18,7 +18,8 @@ public class Teleops extends OpMode {
     DcMotor backRight;
     DcMotor intake;
     DcMotor wobble;
-    DcMotor shooter;
+    DcMotor shooterLeft;
+    DcMotor shooterRight;
 
     Servo flicker;
     Servo claw;
@@ -35,9 +36,13 @@ public class Teleops extends OpMode {
 
         intake = hardwareMap.dcMotor.get("ring");
         wobble = hardwareMap.dcMotor.get("wobble");
+        wobble.setTargetPosition(5);
+        wobble.setPower(0.5);
+        wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         flicker = hardwareMap.servo.get("pusher");
         claw = hardwareMap.servo.get("clamp");
-        shooter = hardwareMap.dcMotor.get("flywheel");
+        shooterLeft = hardwareMap.dcMotor.get("flywheelleft");
+        shooterRight = hardwareMap.dcMotor.get("flywheelright");
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         backRight.setDirection(DcMotorSimple.Direction.REVERSE);
 
@@ -109,13 +114,12 @@ public class Teleops extends OpMode {
 
         //Wobble Arm controls
         if (gamepad2.right_bumper){
-            wobble.setPower(0.6);
+            wobble.setTargetPosition(300);
+            wobble.setPower(0.5);
         }
-        else if (gamepad2.left_bumper) {
-            wobble.setPower(-0.6);
-        }
-        else {
-            wobble.setPower(-0.05);
+        if (gamepad2.left_bumper){
+            wobble.setTargetPosition(500);
+            wobble.setPower(-0.5);
         }
 
         //Claw controls
@@ -126,10 +130,12 @@ public class Teleops extends OpMode {
 
         //Shooter controls
         if (gamepad1.left_bumper) {
-            shooter.setPower(0);
+            shooterLeft.setPower(0);
+            shooterRight.setPower(0);
         }
         if (gamepad1.right_bumper) {
-            shooter.setPower(-2);
+            shooterLeft.setPower(-2);
+            shooterRight.setPower(2);
         }
 
         //Flicker settings
