@@ -134,8 +134,8 @@ public class Teleops extends OpMode {
             shooterRight.setPower(0);
         }
         if (gamepad1.right_bumper) {
-            shooterLeft.setPower(-2);
-            shooterRight.setPower(2);
+            shooterLeft.setPower(5);
+            shooterRight.setPower(-5);
         }
 
         //Flicker settings
@@ -143,7 +143,7 @@ public class Teleops extends OpMode {
             flicker.setPosition(0.6);
         }
         else {
-            flicker.setPosition(0.17);
+            flicker.setPosition(0.06);
         }
 
 
