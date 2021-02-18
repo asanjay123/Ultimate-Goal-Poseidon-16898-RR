@@ -36,9 +36,11 @@ public class Teleops extends OpMode {
 
         intake = hardwareMap.dcMotor.get("ring");
         wobble = hardwareMap.dcMotor.get("wobble");
-        wobble.setTargetPosition(5);
-        wobble.setPower(0.5);
-        wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        wobble.getCurrentPosition();
+        telemetry.addData("Position: ", wobble.getCurrentPosition());
+//        wobble.setTargetPosition(-500);
+//        wobble.setPower(0.5);
+//        wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         flicker = hardwareMap.servo.get("pusher");
         claw = hardwareMap.servo.get("clamp");
         shooterLeft = hardwareMap.dcMotor.get("flywheelleft");
@@ -73,6 +75,9 @@ public class Teleops extends OpMode {
         if (gamepad1.x) {
             intake.setPower(1);
         }
+        if (gamepad1.b) {
+            intake.setPower(0.75);
+        }
         if (gamepad1.y) {
             intake.setPower(0);
         }
@@ -83,7 +88,7 @@ public class Teleops extends OpMode {
         //Drive controls
         drive = -gamepad1.left_stick_y;
         strafe = gamepad1.left_stick_x;
-        rotate = -gamepad1.right_stick_x;
+        rotate = gamepad1.right_stick_x;
 
         double frontLeftPower = drive + strafe - rotate;
         double backLeftPower = drive - strafe - rotate;
@@ -114,13 +119,17 @@ public class Teleops extends OpMode {
 
         //Wobble Arm controls
         if (gamepad2.right_bumper){
-            wobble.setTargetPosition(300);
-            wobble.setPower(0.5);
+            wobble.setTargetPosition(700);
+            wobble.setPower(0.1);
+            wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         if (gamepad2.left_bumper){
-            wobble.setTargetPosition(500);
-            wobble.setPower(-0.5);
+            wobble.setTargetPosition(50);
+            wobble.setPower(-0.1);
+            wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
+        wobble.getCurrentPosition();
+        telemetry.addData("Position: ", wobble.getCurrentPosition());
 
         //Claw controls
         if (gamepad2.x)
