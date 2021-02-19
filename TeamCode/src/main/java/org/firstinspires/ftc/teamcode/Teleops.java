@@ -55,14 +55,8 @@ public class Teleops extends OpMode {
         backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         nitro = 2.0;
-//        servo.setPosition(0.14);
-//     //   servo.setPosition(position);
-//        servo2.setPosition(.6);
-//        //servo2.setPosition(servo1.getPosition()+0.5);
+        flicker.setPosition(0.18);
 //
-//        hookLeft.setPosition(0.3);
-//        hookRight.setPosition(0.3);
-
 
     }
 
@@ -120,12 +114,12 @@ public class Teleops extends OpMode {
         //Wobble Arm controls
         if (gamepad2.right_bumper){
             wobble.setTargetPosition(700);
-            wobble.setPower(0.1);
+            wobble.setPower(-0.1);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         if (gamepad2.left_bumper){
-            wobble.setTargetPosition(50);
-            wobble.setPower(-0.1);
+            wobble.setTargetPosition(0);
+            wobble.setPower(0.1);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         wobble.getCurrentPosition();
@@ -143,8 +137,8 @@ public class Teleops extends OpMode {
             shooterRight.setPower(0);
         }
         if (gamepad1.right_bumper) {
-            shooterLeft.setPower(-2);
-            shooterRight.setPower(2);
+            shooterLeft.setPower(2);
+            shooterRight.setPower(-2);
         }
 
         //Flicker settings
@@ -152,7 +146,7 @@ public class Teleops extends OpMode {
             flicker.setPosition(0.6);
         }
         else {
-            flicker.setPosition(0.17);
+            flicker.setPosition(0.15);
         }
 
 
