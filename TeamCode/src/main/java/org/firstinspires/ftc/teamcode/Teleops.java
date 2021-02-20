@@ -67,16 +67,16 @@ public class Teleops extends OpMode {
 
         //Intake controls
         if (gamepad1.x) {
-            intake.setPower(1);
+            intake.setPower(-1);
         }
         if (gamepad1.b) {
-            intake.setPower(0.75);
+            intake.setPower(-0.75);
         }
         if (gamepad1.y) {
             intake.setPower(0);
         }
         if (gamepad1.a) {
-            intake.setPower(-1);
+            intake.setPower(1);
         }
 
         //Drive controls
