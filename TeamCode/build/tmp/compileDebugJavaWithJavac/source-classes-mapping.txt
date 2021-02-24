@@ -8,6 +8,8 @@ org/firstinspires/ftc/teamcode/drive/opmode/BackAndForth.java
  org.firstinspires.ftc.teamcode.drive.opmode.BackAndForth
 org/firstinspires/ftc/teamcode/drive/opmode/AutomaticFeedforwardTuner.java
  org.firstinspires.ftc.teamcode.drive.opmode.AutomaticFeedforwardTuner
+org/firstinspires/ftc/teamcode/AutonomousPositionB.java
+ org.firstinspires.ftc.teamcode.AutonomousPositionB
 org/firstinspires/ftc/teamcode/drive/opmode/MaxAngularVeloTuner.java
  org.firstinspires.ftc.teamcode.drive.opmode.MaxAngularVeloTuner
 org/firstinspires/ftc/teamcode/drive/opmode/TurnTest.java
@@ -26,6 +28,8 @@ org/firstinspires/ftc/teamcode/util/BNO055IMUUtil.java
  org.firstinspires.ftc.teamcode.util.BNO055IMUUtil
 org/firstinspires/ftc/teamcode/util/AssetsTrajectoryManager.java
  org.firstinspires.ftc.teamcode.util.AssetsTrajectoryManager
+org/firstinspires/ftc/teamcode/AutonomousPositionC.java
+ org.firstinspires.ftc.teamcode.AutonomousPositionC
 org/firstinspires/ftc/teamcode/util/Encoder.java
  org.firstinspires.ftc.teamcode.util.Encoder
  org.firstinspires.ftc.teamcode.util.Encoder$Direction
@@ -55,6 +59,8 @@ org/firstinspires/ftc/teamcode/drive/SampleTankDrive.java
  org.firstinspires.ftc.teamcode.drive.SampleTankDrive
  org.firstinspires.ftc.teamcode.drive.SampleTankDrive$1
  org.firstinspires.ftc.teamcode.drive.SampleTankDrive$Mode
+org/firstinspires/ftc/teamcode/AutonomousPositionA.java
+ org.firstinspires.ftc.teamcode.AutonomousPositionA
 org/firstinspires/ftc/teamcode/drive/DriveConstants.java
  org.firstinspires.ftc.teamcode.drive.DriveConstants
 org/firstinspires/ftc/teamcode/drive/opmode/MaxVelocityTuner.java

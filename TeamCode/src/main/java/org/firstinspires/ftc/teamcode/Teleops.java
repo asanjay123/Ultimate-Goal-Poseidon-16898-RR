@@ -27,6 +27,8 @@ public class Teleops extends OpMode {
 
     double nitro;
 
+    int initPos;
+
     @Override
     public void init(){
         frontLeft = hardwareMap.dcMotor.get("frontleft");
@@ -36,6 +38,7 @@ public class Teleops extends OpMode {
 
         intake = hardwareMap.dcMotor.get("ring");
         wobble = hardwareMap.dcMotor.get("wobble");
+        initPos = wobble.getCurrentPosition();
         wobble.getCurrentPosition();
         telemetry.addData("Position: ", wobble.getCurrentPosition());
 //        wobble.setTargetPosition(-500);
@@ -113,15 +116,17 @@ public class Teleops extends OpMode {
 
         //Wobble Arm controls
         if (gamepad2.right_bumper){
-            wobble.setTargetPosition(700);
+            wobble.setTargetPosition(initPos-700);
             wobble.setPower(-0.1);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         if (gamepad2.left_bumper){
-            wobble.setTargetPosition(0);
+            wobble.setTargetPosition(initPos);
             wobble.setPower(0.1);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
         }
+
         wobble.getCurrentPosition();
         telemetry.addData("Position: ", wobble.getCurrentPosition());
 
