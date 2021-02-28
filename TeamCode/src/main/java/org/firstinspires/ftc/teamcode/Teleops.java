@@ -24,6 +24,9 @@ public class Teleops extends OpMode {
     Servo flicker;
     Servo claw;
 
+    double high = 1;
+    double med = 0.5;
+
 
     double nitro;
 
@@ -58,7 +61,7 @@ public class Teleops extends OpMode {
         backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         nitro = 2.0;
-        flicker.setPosition(0.18);
+        flicker.setPosition(0.14);
 //
 
     }
@@ -141,17 +144,42 @@ public class Teleops extends OpMode {
             shooterLeft.setPower(0);
             shooterRight.setPower(0);
         }
-        if (gamepad1.right_bumper) {
-            shooterLeft.setPower(2);
-            shooterRight.setPower(-2);
+
+
+        if (gamepad1.right_bumper && (shooterLeft.getPower() == med || shooterLeft.getPower() == 0)) {
+                shooterLeft.setPower(high);
+                shooterRight.setPower(-high);
+        }
+        else if (gamepad1.right_bumper && shooterLeft.getPower() == high)
+        {
+            shooterLeft.setPower(med);
+            shooterRight.setPower(-med);
         }
 
-        //Flicker settings
+
+        if (gamepad1.dpad_down)
+        {
+            shooterLeft.setPower(0);
+            shooterRight.setPower(0);
+        }
+        if (gamepad1.dpad_right)
+        {
+            shooterLeft.setPower(med);
+            shooterRight.setPower(-med);
+        }
+        if (gamepad1.dpad_up)
+        {
+            shooterLeft.setPower(high);
+            shooterRight.setPower(-high);
+        }
+
+        // right bumper high
+        // left bumper 0
         if (gamepad2.right_trigger > 0) {
             flicker.setPosition(0.6);
         }
         else {
-            flicker.setPosition(0.15);
+            flicker.setPosition(0.11);
         }
 
 

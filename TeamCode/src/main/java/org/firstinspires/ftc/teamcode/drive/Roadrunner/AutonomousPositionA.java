@@ -27,7 +27,7 @@ public class AutonomousPositionA extends LinearOpMode{
     public void runOpMode(){
         initMotors();
 
-//        SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
+//        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 //        telemetry.addLine("Ready@");
 //        telemetry.update();
 //        waitForStart();
@@ -37,7 +37,7 @@ public class AutonomousPositionA extends LinearOpMode{
 //        drive.setPoseEstimate(new Pose2d(36, 63, Math.PI/2));
 //
 //
-//        drive.followTrajectorySync(
+//        drive.followTrajectory(
 //                drive.trajectoryBuilder()
 //                        .forward(10)
 //                        .strafeLeft(25)
@@ -47,21 +47,21 @@ public class AutonomousPositionA extends LinearOpMode{
 //        hookRight.setPosition(0.26);
 //        hookLeft.setPosition(0.56);
 //
-//        drive.followTrajectorySync(
+//        drive.followTrajectory(
 //                drive.trajectoryBuilder()
 //                        .forward(4)
 //                        .build()
 //        );
 //
 //
-//        drive.followTrajectorySync(
+//        drive.followTrajectory(
 //                drive.trajectoryBuilder()
 ////                        .reverse()
 //                        .back(40)
 //                        .build()
 //        );
 //
-//        drive.turnSync(Math.toRadians(80));
+//        drive.turn(Math.toRadians(80));
 //
 //        drive.setMotorPowers(1, 1, 1, 1);
 //        sleep(1000);
@@ -74,21 +74,21 @@ public class AutonomousPositionA extends LinearOpMode{
 //
 //        servo.setPosition(.17);
 //
-//        drive.followTrajectorySync(
+//        drive.followTrajectory(
 //                drive.trajectoryBuilder()
 //                        .back(1)
 //                        .build()
 //        );
 //
 //        sleep(100);
-//        drive.followTrajectorySync(
+//        drive.followTrajectory(
 //                drive.trajectoryBuilder()
 //                        .strafeLeft(30)
 //                        .build()
 //        );
 //
 //        sleep(100);
-//        drive.followTrajectorySync(
+//        drive.followTrajectory(
 //                drive.trajectoryBuilder()
 //                        .back(20)
 //                        .build()
