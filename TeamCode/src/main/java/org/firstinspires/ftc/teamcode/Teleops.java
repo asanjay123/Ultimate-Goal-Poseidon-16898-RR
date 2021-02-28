@@ -23,6 +23,7 @@ public class Teleops extends OpMode {
 
     Servo flicker;
     Servo claw;
+    Servo stack;
 
     double high = 1;
     double med = 0.5;
@@ -49,6 +50,7 @@ public class Teleops extends OpMode {
 //        wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         flicker = hardwareMap.servo.get("pusher");
         claw = hardwareMap.servo.get("clamp");
+        stack = hardwareMap.servo.get("stack");
         shooterLeft = hardwareMap.dcMotor.get("flywheelleft");
         shooterRight = hardwareMap.dcMotor.get("flywheelright");
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -62,6 +64,9 @@ public class Teleops extends OpMode {
 
         nitro = 2.0;
         flicker.setPosition(0.14);
+
+        telemetry.addData("Stack pos: ", stack.getPosition());
+        telemetry.update();
 //
 
     }
