@@ -27,6 +27,8 @@ public class AutonomousPositionA extends LinearOpMode{
     public void runOpMode(){
         initMotors();
 
+        waitForStart();
+
 //        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 //        telemetry.addLine("Ready@");
 //        telemetry.update();

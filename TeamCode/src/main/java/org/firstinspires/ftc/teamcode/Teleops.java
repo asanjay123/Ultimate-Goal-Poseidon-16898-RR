@@ -64,9 +64,6 @@ public class Teleops extends OpMode {
 
         nitro = 2.0;
         flicker.setPosition(0.14);
-
-        telemetry.addData("Stack pos: ", stack.getPosition());
-        telemetry.update();
 //
 
     }
@@ -74,7 +71,11 @@ public class Teleops extends OpMode {
     @Override
     public void loop() {
 
+        telemetry.addData("Stack pos: ", stack.getPosition());
+        telemetry.update();
 
+        telemetry.addData("Nitro: ", (nitro == 1) ? "High":( (nitro==2) ? "Medium":"Low"));
+        telemetry.update();
 
         //Intake controls
         if (gamepad1.x) {
@@ -161,7 +162,7 @@ public class Teleops extends OpMode {
             shooterRight.setPower(-med);
         }
 
-
+        //fly wheel power controls
         if (gamepad1.dpad_down)
         {
             shooterLeft.setPower(0);
@@ -178,14 +179,25 @@ public class Teleops extends OpMode {
             shooterRight.setPower(-high);
         }
 
-        // right bumper high
-        // left bumper 0
+        //flicker servo controls
         if (gamepad2.right_trigger > 0) {
             flicker.setPosition(0.6);
         }
         else {
             flicker.setPosition(0.11);
         }
+
+        //stack servo controls
+        if (gamepad2.left_trigger > 0) {
+            stack.setPosition(0.70);
+        }
+        else {
+            stack.setPosition(0.97);
+        }
+
+
+
+
 
 
 
@@ -237,9 +249,5 @@ public class Teleops extends OpMode {
 //                int x = 5;
 //            }
 //        }
-
-        telemetry.addData("Nitro: ", (nitro == 1) ? "High":( (nitro==2) ? "Medium":"Low"));
-//        telemetry.addData("Twisty Position: ", servo2.getPosition());
-        telemetry.update();
     }
 }
