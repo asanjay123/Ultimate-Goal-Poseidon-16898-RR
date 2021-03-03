@@ -146,21 +146,21 @@ public class Teleops extends OpMode {
             claw.setPosition(0.5);
 
         //Shooter controls
-        if (gamepad1.left_bumper) {
-            shooterLeft.setPower(0);
-            shooterRight.setPower(0);
-        }
-
-
-        if (gamepad1.right_bumper && (shooterLeft.getPower() == med || shooterLeft.getPower() == 0)) {
-                shooterLeft.setPower(high);
-                shooterRight.setPower(-high);
-        }
-        else if (gamepad1.right_bumper && shooterLeft.getPower() == high)
-        {
-            shooterLeft.setPower(med);
-            shooterRight.setPower(-med);
-        }
+//        if (gamepad1.left_bumper) {
+//            shooterLeft.setPower(0);
+//            shooterRight.setPower(0);
+//        }
+//
+//
+//        if (gamepad1.right_bumper && (shooterLeft.getPower() == med || shooterLeft.getPower() == 0)) {
+//                shooterLeft.setPower(high);
+//                shooterRight.setPower(-high);
+//        }
+//        else if (gamepad1.right_bumper && shooterLeft.getPower() == high)
+//        {
+//            shooterLeft.setPower(med);
+//            shooterRight.setPower(-med);
+//        }
 
         //fly wheel power controls
         if (gamepad1.dpad_down)
