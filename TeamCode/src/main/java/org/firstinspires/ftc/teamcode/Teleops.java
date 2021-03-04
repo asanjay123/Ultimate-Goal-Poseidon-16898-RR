@@ -25,8 +25,8 @@ public class Teleops extends OpMode {
     Servo claw;
     Servo stack;
 
-    double high = 1;
-    double med = 0.5;
+    double high = 2;
+    double med = 0.85;
 
 
     double nitro;
