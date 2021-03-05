@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-@Autonomous(name = "Auto Foundation Left Roadrunner w/ Coordinate (BLue)")
+@Autonomous(name = "Autonomous Position A")
 public class AutonomousPositionA extends LinearOpMode{
     Servo servo;
     Servo servo1;
@@ -29,10 +29,9 @@ public class AutonomousPositionA extends LinearOpMode{
 
         waitForStart();
 
-//        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-//        telemetry.addLine("Ready@");
-//        telemetry.update();
-//        waitForStart();
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+        telemetry.addLine("Ready@");
+        telemetry.update();
 //
 //
 //

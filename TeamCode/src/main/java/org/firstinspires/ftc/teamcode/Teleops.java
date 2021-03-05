@@ -25,8 +25,9 @@ public class Teleops extends OpMode {
     Servo claw;
     Servo stack;
 
-    double high = 2;
-    double med = 0.85;
+    double high = 20;
+    double med = 0.9;
+    double shot = 0.85;
 
 
     double nitro;
@@ -173,6 +174,11 @@ public class Teleops extends OpMode {
             shooterLeft.setPower(med);
             shooterRight.setPower(-med);
         }
+        if (gamepad1.dpad_left)
+        {
+            shooterLeft.setPower(shot);
+            shooterRight.setPower(-shot);
+        }
         if (gamepad1.dpad_up)
         {
             shooterLeft.setPower(high);
@@ -181,7 +187,7 @@ public class Teleops extends OpMode {
 
         //flicker servo controls
         if (gamepad2.right_trigger > 0) {
-            flicker.setPosition(0.6);
+            flicker.setPosition(0.65);
         }
         else {
             flicker.setPosition(0.11);
