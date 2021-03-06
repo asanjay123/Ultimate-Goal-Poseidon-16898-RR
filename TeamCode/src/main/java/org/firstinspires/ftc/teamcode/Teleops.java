@@ -26,8 +26,8 @@ public class Teleops extends OpMode {
     Servo stack;
 
     double high = 20;
-    double med = 0.9;
-    double shot = 0.85;
+    double shot = 0.96;
+
 
 
     double nitro;
@@ -46,9 +46,6 @@ public class Teleops extends OpMode {
         initPos = wobble.getCurrentPosition();
         wobble.getCurrentPosition();
         telemetry.addData("Position: ", wobble.getCurrentPosition());
-//        wobble.setTargetPosition(-500);
-//        wobble.setPower(0.5);
-//        wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         flicker = hardwareMap.servo.get("pusher");
         claw = hardwareMap.servo.get("clamp");
         stack = hardwareMap.servo.get("stack");
@@ -164,15 +161,20 @@ public class Teleops extends OpMode {
 //        }
 
         //fly wheel power controls
-        if (gamepad1.dpad_down)
+        if (gamepad1.left_bumper)
         {
             shooterLeft.setPower(0);
             shooterRight.setPower(0);
         }
+        if (gamepad1.right_bumper)
+        {
+            shooterLeft.setPower(high);
+            shooterRight.setPower(-high);
+        }
         if (gamepad1.dpad_right)
         {
-            shooterLeft.setPower(med);
-            shooterRight.setPower(-med);
+            shooterLeft.setPower(0.93);
+            shooterRight.setPower(-0.93);
         }
         if (gamepad1.dpad_left)
         {
@@ -181,8 +183,12 @@ public class Teleops extends OpMode {
         }
         if (gamepad1.dpad_up)
         {
-            shooterLeft.setPower(high);
-            shooterRight.setPower(-high);
+            shooterLeft.setPower(0.88);
+            shooterRight.setPower(-0.88);
+        }if (gamepad1.dpad_down)
+        {
+            shooterLeft.setPower(0.97);
+            shooterRight.setPower(-0.97);
         }
 
         //flicker servo controls

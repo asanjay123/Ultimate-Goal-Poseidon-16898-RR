@@ -4,6 +4,7 @@ import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
@@ -18,10 +19,18 @@ import java.util.List;
 
 @Autonomous(name = "Autonomous Position A")
 public class AutonomousPositionA extends LinearOpMode{
-    Servo servo;
-    Servo servo1;
-    Servo hookRight;
-    Servo hookLeft;
+
+
+    DcMotor intake;
+    DcMotor wobble;
+    DcMotor shooterLeft;
+    DcMotor shooterRight;
+
+    Servo flicker;
+    Servo claw;
+    Servo stack;
+
+    int initPos;
 
     @Override
     public void runOpMode(){
@@ -32,6 +41,37 @@ public class AutonomousPositionA extends LinearOpMode{
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         telemetry.addLine("Ready@");
         telemetry.update();
+
+        //Scan rings
+
+        //Move to box
+
+        //Wobble extension
+        wobble.setTargetPosition(initPos-700);
+        claw.setPosition(0.5);
+
+        //Move out of the box
+
+        //Close claw and move arm back up
+        claw.setPosition(0.88);
+        wobble.setTargetPosition(initPos);
+
+        //Move to shooting position
+
+        //Shoot the three rings
+
+        //Move to stack of rings
+
+        //Collect stack of rings
+
+        //Move to shooting position
+
+        //Shoot the rings
+
+        //Park at the middle line
+
+
+        
 //
 //
 //
@@ -101,13 +141,16 @@ public class AutonomousPositionA extends LinearOpMode{
 
 
     public void initMotors(){
-        servo = hardwareMap.servo.get("servo");
-        servo1 = hardwareMap.servo.get("servo1");
-        hookRight = hardwareMap.servo.get("hookRight");
-        hookLeft = hardwareMap.servo.get("hookLeft");
-
-        servo.setPosition(0.9);
-        servo1.setPosition(0.5);
+        intake = hardwareMap.dcMotor.get("ring");
+        wobble = hardwareMap.dcMotor.get("wobble");
+        initPos = wobble.getCurrentPosition();
+        wobble.getCurrentPosition();
+        telemetry.addData("Position: ", wobble.getCurrentPosition());
+        flicker = hardwareMap.servo.get("pusher");
+        claw = hardwareMap.servo.get("clamp");
+        stack = hardwareMap.servo.get("stack");
+        shooterLeft = hardwareMap.dcMotor.get("flywheelleft");
+        shooterRight = hardwareMap.dcMotor.get("flywheelright");
 
     }
 }
