@@ -47,11 +47,13 @@ public class AutonomousPositionA extends LinearOpMode{
     @Override
     public void runOpMode(){
         initMotors();
-
-        waitForStart();
+        claw.setPosition(0.88);
+        flicker.setPosition(0.11);
 
         telemetry.addLine("Ready@");
         telemetry.update();
+
+        waitForStart();
 
         //Scan rings
 
@@ -62,31 +64,36 @@ public class AutonomousPositionA extends LinearOpMode{
 
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(60.5, 27.75, 0))
-                        .splineToLinearHeading(new Pose2d(2,60,0), 0.0)
+                        .splineToLinearHeading(new Pose2d(-5,50,0), 0.0)
                         .build()
         );
 
+        drive.turn(Math.toRadians(60));
 
-        wobble.setTargetPosition(initPos-700);
+        sleep(200);
+        wobble.setTargetPosition(initPos-650);
         wobble.setPower(0.3);
         wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         while(wobble.isBusy())
         {
-
+        opModeIsActive();
         }
 
         claw.setPosition(0.5);
 
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(2, 60, 0))
-                        .forward(10)
+                        .forward(15)
                         .build()
         );
 
+        sleep(300);
         claw.setPosition(0.88);
 
-        sleep(500);
+        drive.turn(-Math.toRadians(60));
+
+        sleep(200);
 
         wobble.setTargetPosition(initPos);
         wobble.setPower(-0.3);
@@ -94,17 +101,44 @@ public class AutonomousPositionA extends LinearOpMode{
 
         while(wobble.isBusy())
         {
+            opModeIsActive();
 
         }
 
         drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(12, 60, 0))
-                        .splineToLinearHeading(new Pose2d(0,8,0), 0.0)
+                drive.trajectoryBuilder(new Pose2d(12, 50, 0))
+                        .splineToLinearHeading(new Pose2d(0,-5,0), 0.0)
                         .build()
 
         );
-        drive.turn(Math.toRadians(185));
+        drive.turn(Math.toRadians(190));
 
+        drive.followTrajectory(
+                drive.trajectoryBuilder(new Pose2d(0, 8, 0))
+                        .forward(8)
+                        .build()
+
+        );
+
+        shooterLeft.setPower(10);
+        shooterRight.setPower(-10);
+
+        flicker.setPosition(0.65);
+        sleep(1500);
+        flicker.setPosition(0.11);
+        sleep(1000);
+
+        flicker.setPosition(0.65);
+        sleep(1000);
+        flicker.setPosition(0.11);
+        sleep(1000);
+
+        flicker.setPosition(0.65);
+        sleep(1000);
+        flicker.setPosition(0.11);
+
+        shooterRight.setPower(10);
+        shooterLeft.setPower(10);
         if (ringCount == 0)
         {
 

@@ -35,6 +35,8 @@ org/firstinspires/ftc/teamcode/util/LynxModuleUtil.java
  org.firstinspires.ftc.teamcode.util.LynxModuleUtil
  org.firstinspires.ftc.teamcode.util.LynxModuleUtil$LynxFirmwareVersion
  org.firstinspires.ftc.teamcode.util.LynxModuleUtil$LynxFirmwareVersionException
+org/firstinspires/ftc/teamcode/drive/TensorFlow/ConceptVuforiaUltimateGoalNavigation.java
+ org.firstinspires.ftc.teamcode.drive.TensorFlow.ConceptVuforiaUltimateGoalNavigation
 org/firstinspires/ftc/teamcode/drive/opmode/ManualFeedforwardTuner.java
  org.firstinspires.ftc.teamcode.drive.opmode.ManualFeedforwardTuner
  org.firstinspires.ftc.teamcode.drive.opmode.ManualFeedforwardTuner$1
@@ -53,6 +55,8 @@ org/firstinspires/ftc/teamcode/util/AxesSigns.java
  org.firstinspires.ftc.teamcode.util.AxesSigns
 org/firstinspires/ftc/teamcode/drive/opmode/LocalizationTest.java
  org.firstinspires.ftc.teamcode.drive.opmode.LocalizationTest
+org/firstinspires/ftc/teamcode/drive/TensorFlow/ConceptTensorFlowObjectDetection.java
+ org.firstinspires.ftc.teamcode.drive.TensorFlow.ConceptTensorFlowObjectDetection
 org/firstinspires/ftc/teamcode/drive/SampleTankDrive.java
  org.firstinspires.ftc.teamcode.drive.SampleTankDrive
  org.firstinspires.ftc.teamcode.drive.SampleTankDrive$1

@@ -208,58 +208,5 @@ public class Teleops extends OpMode {
         }
 
 
-
-
-
-
-
-//        try {
-//            servo.setPosition(position);
-//        }
-//        catch(Exception e) {
-//            int x = 5;
-//        }
-//
-//        if (gamepad2.dpad_up){
-//            try{
-//                servo1.setPosition(servo1.getPosition() + .01);
-//            }catch(Exception e){
-//                int x = 5;
-//            }
-//        }
-//
-//        if (gamepad2.dpad_down){
-//            try{
-//                servo1.setPosition(servo1.getPosition() - .01);
-//            }catch(Exception e){
-//                int x = 5;
-//            }
-//        }
-//
-//        if (gamepad1.left_stick_button){
-//            servo1.setPosition(0);
-//        }
-//        if (gamepad1.right_stick_button){
-//            servo1.setPosition(.6);
-//        }
-//
-//       // servo2.setPosition(0);
-//
-//        if (gamepad2.dpad_left){
-//            try{
-//                servo2.setPosition(0);
-//            }catch(Exception e){
-//                int x = 5;
-//            }
-//
-//        }
-//        if (gamepad2.dpad_right){
-//            try{
-//                servo2.setPosition(0);
-//            }catch(Exception e){
-//
-//                int x = 5;
-//            }
-//        }
     }
 }
