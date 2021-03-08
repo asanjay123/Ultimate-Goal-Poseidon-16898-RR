@@ -64,9 +64,16 @@ public class AutonomousPositionA extends LinearOpMode{
 
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(60.5, 27.75, 0))
-                        .splineToLinearHeading(new Pose2d(-5,50,0), 0.0)
+                        .splineToLinearHeading(new Pose2d(35,68,0), 0.0)
+                        .splineToLinearHeading(new Pose2d(-10,62,0), 0.0)
                         .build()
         );
+
+        /*drive.followTrajectory(
+                drive.trajectoryBuilder(new Pose2d(60.5, 68, 0))
+                        .splineToLinearHeading(new Pose2d(-10,68,0), 0.0)
+                        .build()
+        );*/
 
         drive.turn(Math.toRadians(60));
 
@@ -77,21 +84,21 @@ public class AutonomousPositionA extends LinearOpMode{
 
         while(wobble.isBusy())
         {
-        opModeIsActive();
+            opModeIsActive();
         }
 
         claw.setPosition(0.5);
 
         drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(2, 60, 0))
-                        .forward(15)
+                drive.trajectoryBuilder(new Pose2d(-10, 62, 0))
+                        .forward(10)
                         .build()
         );
 
         sleep(300);
         claw.setPosition(0.88);
 
-        drive.turn(-Math.toRadians(60));
+        drive.turn(-Math.toRadians(48));
 
         sleep(200);
 
@@ -105,23 +112,19 @@ public class AutonomousPositionA extends LinearOpMode{
 
         }
 
-        drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(12, 50, 0))
-                        .splineToLinearHeading(new Pose2d(0,-5,0), 0.0)
-                        .build()
-
-        );
-        drive.turn(Math.toRadians(190));
+        sleep(200);
 
         drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(0, 8, 0))
-                        .forward(8)
+                drive.trajectoryBuilder(new Pose2d(0, 62, 0))
+                        .splineToLinearHeading(new Pose2d(-2,-6,0), 0.0)
                         .build()
 
         );
 
-        shooterLeft.setPower(10);
-        shooterRight.setPower(-10);
+        drive.turn(Math.toRadians(180));
+
+        /*shooterLeft.setPower(0.87);
+        shooterRight.setPower(-0.87);
 
         flicker.setPosition(0.65);
         sleep(1500);
@@ -135,10 +138,78 @@ public class AutonomousPositionA extends LinearOpMode{
 
         flicker.setPosition(0.65);
         sleep(1000);
-        flicker.setPosition(0.11);
+        flicker.setPosition(0.11); */
 
-        shooterRight.setPower(10);
-        shooterLeft.setPower(10);
+        sleep(200);
+
+        drive.followTrajectory(
+                drive.trajectoryBuilder(new Pose2d(-2, -6, Math.PI))
+                        .splineToLinearHeading(new Pose2d(20,-6, Math.PI), 0.0)
+                        .build()
+
+        );
+
+        wobble.setTargetPosition(initPos-650);
+        wobble.setPower(0.3);
+        wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        while(wobble.isBusy())
+        {
+            opModeIsActive();
+        }
+
+        claw.setPosition(0.5);
+
+        sleep(200);
+
+        drive.turn(Math.toRadians(20));
+
+        drive.followTrajectory(
+                drive.trajectoryBuilder(new Pose2d(-2, -6, Math.PI))
+                        .splineToLinearHeading(new Pose2d(22,-6, Math.PI), 0.0)
+                        .build()
+
+        );
+
+        claw.setPosition(0.88);
+
+        sleep(200);
+
+        drive.turn(-Math.toRadians(17));
+
+        sleep(200);
+
+        drive.turn(Math.toRadians(180));
+
+        drive.followTrajectory(
+                drive.trajectoryBuilder(new Pose2d(22, -6, Math.PI))
+                        .splineToLinearHeading(new Pose2d(10,20, Math.PI), 0.0)
+                        .build()
+
+        );
+
+        drive.followTrajectory(
+                drive.trajectoryBuilder(new Pose2d(10,20, Math.PI))
+                        .splineToLinearHeading(new Pose2d(0,40, 0), 0.0)
+                        .build()
+
+        );
+
+        /*drive.followTrajectory(
+                drive.trajectoryBuilder(new Pose2d(0,40, 0))
+                        .splineToLinearHeading(new Pose2d(-10,68, 0), 0.0)
+                        .build()
+
+        ); */
+
+
+
+
+
+
+
+
+
         if (ringCount == 0)
         {
 
