@@ -1,17 +1,12 @@
 package org.firstinspires.ftc.teamcode.drive.Roadrunner;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
-import org.firstinspires.ftc.teamcode.drive.SampleTankDrive;
-
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,6 +42,7 @@ public class AutonomousPositionA extends LinearOpMode{
     @Override
     public void runOpMode(){
         initMotors();
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         claw.setPosition(0.88);
         flicker.setPosition(0.11);
 
@@ -60,12 +56,10 @@ public class AutonomousPositionA extends LinearOpMode{
         //Move to box
 
 
-        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-
         drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(60.5, 27.75, 0))
-                        .splineToLinearHeading(new Pose2d(35,68,0), 0.0)
-                        .splineToLinearHeading(new Pose2d(-10,62,0), 0.0)
+                drive.trajectoryBuilder(new Pose2d(62, 22, 0))
+                        .splineToLinearHeading(new Pose2d(35,40,0), 0.0)
+                        .splineToLinearHeading(new Pose2d(-10,52,0), 0.0)
                         .build()
         );
 
@@ -256,7 +250,7 @@ public class AutonomousPositionA extends LinearOpMode{
         //Park at the middle line
 
 
-        
+
 //
 //
 //

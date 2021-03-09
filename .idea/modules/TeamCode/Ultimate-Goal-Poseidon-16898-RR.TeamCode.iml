@@ -55,6 +55,8 @@
     <orderEntry type="library" name="Gradle: org.firstinspires.ftc:RobotServer:6.1.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: org.firstinspires.ftc:Hardware:6.1.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: org.firstinspires.ftc:FtcCommon:6.1.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: org.openftc:easyopencv:1.4.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: org.openftc:opencv-repackaged:4.1.0-C@aar" level="project" />
     <orderEntry type="library" name="Gradle: :tfod-release:@aar" level="project" />
     <orderEntry type="library" name="Gradle: :tensorflow-lite-0.0.0-nightly:@aar" level="project" />
     <orderEntry type="module" module-name="Ultimate-Goal-Poseidon-16898-RR.FtcRobotController" />

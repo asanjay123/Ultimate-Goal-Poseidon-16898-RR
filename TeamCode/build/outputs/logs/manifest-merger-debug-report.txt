@@ -11,6 +11,7 @@ MERGED from [org.firstinspires.ftc:Hardware:6.1.1] /Users/Achi/.gradle/caches/tr
 MERGED from [org.firstinspires.ftc:FtcCommon:6.1.1] /Users/Achi/.gradle/caches/transforms-2/files-2.1/68cefcf2ef5c961bdb0795179e86e386/jetified-FtcCommon-6.1.1/AndroidManifest.xml:3:1-235:12
 MERGED from [:tfod-release:] /Users/Achi/.gradle/caches/transforms-2/files-2.1/f85e3fd1446a56cf088ed44cfab24033/jetified-tfod-release/AndroidManifest.xml:2:1-11:12
 MERGED from [:tensorflow-lite-0.0.0-nightly:] /Users/Achi/.gradle/caches/transforms-2/files-2.1/ff9005f19227c5dc6e8575bc6a074485/jetified-tensorflow-lite-0.0.0-nightly/AndroidManifest.xml:2:1-6:12
+MERGED from [org.openftc:easyopencv:1.4.1] /Users/Achi/.gradle/caches/transforms-2/files-2.1/58dd4a9843b8c0ed4f88ce8ef3e68dd7/jetified-easyopencv-1.4.1/AndroidManifest.xml:2:1-11:12
 MERGED from [org.firstinspires.ftc:Inspection:6.1.1] /Users/Achi/.gradle/caches/transforms-2/files-2.1/db42586ee7172feb96873d2f2b533901/jetified-Inspection-6.1.1/AndroidManifest.xml:2:1-32:12
 MERGED from [org.firstinspires.ftc:Blocks:6.1.1] /Users/Achi/.gradle/caches/transforms-2/files-2.1/f81f8bd82f11a0736abaa44ec3a5e3b5/jetified-Blocks-6.1.1/AndroidManifest.xml:2:1-26:12
 MERGED from [org.firstinspires.ftc:RobotServer:6.1.1] /Users/Achi/.gradle/caches/transforms-2/files-2.1/2db90b1accd211c438ed43616e9b8231/jetified-RobotServer-6.1.1/AndroidManifest.xml:2:1-11:12
@@ -35,6 +36,7 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/Achi/.gradle/cache
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/Achi/.gradle/caches/transforms-2/files-2.1/5e93b9f41c3983a761aa6e19533f24ec/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/Achi/.gradle/caches/transforms-2/files-2.1/1435e0b5216c3fd72a2d6579c29d3ee1/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/Achi/.gradle/caches/transforms-2/files-2.1/035487676af6db782633ffbdc1d98b21/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [org.openftc:opencv-repackaged:4.1.0-C] /Users/Achi/.gradle/caches/transforms-2/files-2.1/969511b262f78f57d8a9e043a89e15e7/jetified-opencv-repackaged-4.1.0-C/AndroidManifest.xml:2:1-11:12
 INJECTED from /Users/Achi/Downloads/Github Desktop/Ultimate-Goal-Poseidon-16898-RR/TeamCode/src/main/AndroidManifest.xml:8:1-12:12
 INJECTED from /Users/Achi/Downloads/Github Desktop/Ultimate-Goal-Poseidon-16898-RR/TeamCode/src/main/AndroidManifest.xml:8:1-12:12
 INJECTED from /Users/Achi/Downloads/Github Desktop/Ultimate-Goal-Poseidon-16898-RR/TeamCode/src/main/AndroidManifest.xml:8:1-12:12
@@ -104,6 +106,8 @@ MERGED from [org.firstinspires.ftc:FtcCommon:6.1.1] /Users/Achi/.gradle/caches/t
 MERGED from [org.firstinspires.ftc:FtcCommon:6.1.1] /Users/Achi/.gradle/caches/transforms-2/files-2.1/68cefcf2ef5c961bdb0795179e86e386/jetified-FtcCommon-6.1.1/AndroidManifest.xml:8:5-10:41
 MERGED from [:tfod-release:] /Users/Achi/.gradle/caches/transforms-2/files-2.1/f85e3fd1446a56cf088ed44cfab24033/jetified-tfod-release/AndroidManifest.xml:7:5-9:41
 MERGED from [:tfod-release:] /Users/Achi/.gradle/caches/transforms-2/files-2.1/f85e3fd1446a56cf088ed44cfab24033/jetified-tfod-release/AndroidManifest.xml:7:5-9:41
+MERGED from [org.openftc:easyopencv:1.4.1] /Users/Achi/.gradle/caches/transforms-2/files-2.1/58dd4a9843b8c0ed4f88ce8ef3e68dd7/jetified-easyopencv-1.4.1/AndroidManifest.xml:7:5-9:41
+MERGED from [org.openftc:easyopencv:1.4.1] /Users/Achi/.gradle/caches/transforms-2/files-2.1/58dd4a9843b8c0ed4f88ce8ef3e68dd7/jetified-easyopencv-1.4.1/AndroidManifest.xml:7:5-9:41
 MERGED from [org.firstinspires.ftc:Inspection:6.1.1] /Users/Achi/.gradle/caches/transforms-2/files-2.1/db42586ee7172feb96873d2f2b533901/jetified-Inspection-6.1.1/AndroidManifest.xml:7:5-9:41
 MERGED from [org.firstinspires.ftc:Inspection:6.1.1] /Users/Achi/.gradle/caches/transforms-2/files-2.1/db42586ee7172feb96873d2f2b533901/jetified-Inspection-6.1.1/AndroidManifest.xml:7:5-9:41
 MERGED from [org.firstinspires.ftc:Blocks:6.1.1] /Users/Achi/.gradle/caches/transforms-2/files-2.1/f81f8bd82f11a0736abaa44ec3a5e3b5/jetified-Blocks-6.1.1/AndroidManifest.xml:7:5-9:41
@@ -152,6 +156,8 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/Achi/.grad
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/Achi/.gradle/caches/transforms-2/files-2.1/1435e0b5216c3fd72a2d6579c29d3ee1/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/Achi/.gradle/caches/transforms-2/files-2.1/035487676af6db782633ffbdc1d98b21/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/Achi/.gradle/caches/transforms-2/files-2.1/035487676af6db782633ffbdc1d98b21/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [org.openftc:opencv-repackaged:4.1.0-C] /Users/Achi/.gradle/caches/transforms-2/files-2.1/969511b262f78f57d8a9e043a89e15e7/jetified-opencv-repackaged-4.1.0-C/AndroidManifest.xml:7:5-9:41
+MERGED from [org.openftc:opencv-repackaged:4.1.0-C] /Users/Achi/.gradle/caches/transforms-2/files-2.1/969511b262f78f57d8a9e043a89e15e7/jetified-opencv-repackaged-4.1.0-C/AndroidManifest.xml:7:5-9:41
 INJECTED from /Users/Achi/Downloads/Github Desktop/Ultimate-Goal-Poseidon-16898-RR/TeamCode/src/main/AndroidManifest.xml
 INJECTED from /Users/Achi/Downloads/Github Desktop/Ultimate-Goal-Poseidon-16898-RR/TeamCode/src/main/AndroidManifest.xml
 	android:targetSdkVersion
