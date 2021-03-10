@@ -6,6 +6,11 @@ org/firstinspires/ftc/teamcode/drive/opmode/DriveVelocityPIDTuner.java
  org.firstinspires.ftc.teamcode.drive.opmode.DriveVelocityPIDTuner$Mode
 org/firstinspires/ftc/teamcode/drive/Roadrunner/AutonomousPositionA.java
  org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousPositionA
+org/firstinspires/ftc/teamcode/drive/Roadrunner/AutonomousTensorFlow.java
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousTensorFlow
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousTensorFlow$1
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousTensorFlow$SkystoneDeterminationPipeline
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousTensorFlow$SkystoneDeterminationPipeline$RingPosition
 org/firstinspires/ftc/teamcode/drive/opmode/BackAndForth.java
  org.firstinspires.ftc.teamcode.drive.opmode.BackAndForth
 org/firstinspires/ftc/teamcode/drive/opmode/AutomaticFeedforwardTuner.java
@@ -63,11 +68,6 @@ org/firstinspires/ftc/teamcode/drive/SampleTankDrive.java
  org.firstinspires.ftc.teamcode.drive.SampleTankDrive$Mode
 org/firstinspires/ftc/teamcode/drive/DriveConstants.java
  org.firstinspires.ftc.teamcode.drive.DriveConstants
-org/firstinspires/ftc/teamcode/drive/TensorFlow/AutonomousTensorFlow.java
- org.firstinspires.ftc.teamcode.drive.TensorFlow.AutonomousTensorFlow
- org.firstinspires.ftc.teamcode.drive.TensorFlow.AutonomousTensorFlow$1
- org.firstinspires.ftc.teamcode.drive.TensorFlow.AutonomousTensorFlow$SkystoneDeterminationPipeline
- org.firstinspires.ftc.teamcode.drive.TensorFlow.AutonomousTensorFlow$SkystoneDeterminationPipeline$RingPosition
 org/firstinspires/ftc/teamcode/drive/opmode/MaxVelocityTuner.java
  org.firstinspires.ftc.teamcode.drive.opmode.MaxVelocityTuner
 org/firstinspires/ftc/teamcode/drive/opmode/StrafeTest.java

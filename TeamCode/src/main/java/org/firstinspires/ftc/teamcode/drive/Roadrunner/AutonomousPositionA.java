@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.drive.Roadrunner;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -14,6 +15,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Autonomous(name = "Autonomous Position A")
+@Disabled
 public class AutonomousPositionA extends LinearOpMode{
 
 
