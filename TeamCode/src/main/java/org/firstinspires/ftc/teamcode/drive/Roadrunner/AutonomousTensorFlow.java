@@ -117,16 +117,17 @@ public class AutonomousTensorFlow extends LinearOpMode
         if (pipeline.position == SkystoneDeterminationPipeline.RingPosition.NONE) {
 
             wobble.setTargetPosition(initPos-700);
-            wobble.setPower(0.1);
+            wobble.setPower(0.35);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(62, 22, 0))
+                            .splineToLinearHeading(new Pose2d(-5,60,0), 0.0)
+                            .build()
+            );
 
             while(wobble.isBusy() && opModeIsActive())
             {
-                drive.followTrajectory(
-                        drive.trajectoryBuilder(new Pose2d(62, 22, 0))
-                                .splineToLinearHeading(new Pose2d(-5,58,0), 0.0)
-                                .build()
-                );
+
                 opModeIsActive();
             }
 
@@ -136,8 +137,8 @@ public class AutonomousTensorFlow extends LinearOpMode
             claw.setPosition(0.5);
             sleep(400);
 
-            wobble.setTargetPosition(initPos-300);
-            wobble.setPower(0.4);
+            wobble.setTargetPosition(initPos);
+            wobble.setPower(0.45);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             while(wobble.isBusy() && opModeIsActive())
@@ -145,32 +146,30 @@ public class AutonomousTensorFlow extends LinearOpMode
                 claw.setPosition(0.88);
                 opModeIsActive();
             }
-            drive.turn(-Math.toRadians(48));
+            drive.turn(-Math.toRadians(50));
 
 
-            wobble.setTargetPosition(initPos);
-            wobble.setPower(-0.4);
-            wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(0, 62, 0))
-                            .splineToLinearHeading(new Pose2d(-5,-6,0), 0.0)
+                            .strafeRight(73)
                             .build()
             );
 
-            while(wobble.isBusy() && opModeIsActive())
-            {
-                opModeIsActive();
-            }
+//            drive.followTrajectory(
+//                    drive.trajectoryBuilder(new Pose2d(0, 62, 0))
+//                            .splineToLinearHeading(new Pose2d(0,-6,0), 0.0)
+//                            .build()
+//            );
 
-            drive.turn(Math.toRadians(190));
+            drive.turn(Math.toRadians(185));
 
             //Shooting rings
-            shooterLeft.setPower(0.87);
-            shooterRight.setPower(-0.87);
+            shooterLeft.setPower(0.92);
+            shooterRight.setPower(-0.92);
 
             flicker.setPosition(0.65);
             sleep(1000);
-            drive.turn(-Math.toRadians(15));
+            drive.turn(-Math.toRadians(16));
             flicker.setPosition(0.11);
             sleep(900);
 
@@ -183,6 +182,9 @@ public class AutonomousTensorFlow extends LinearOpMode
             flicker.setPosition(0.65);
             sleep(1000);
             flicker.setPosition(0.11);
+
+            shooterLeft.setPower(0);
+            shooterRight.setPower(0);
 
 
             //Extending wobble
@@ -207,11 +209,11 @@ public class AutonomousTensorFlow extends LinearOpMode
             sleep(50);
 
             //Adjustment Turn
-            drive.turn(Math.toRadians(15));
+//            drive.turn(Math.toRadians(15));
 
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(-2, -6, Math.PI))
-                            .splineToLinearHeading(new Pose2d(15,-6, Math.PI), 0.0)
+                            .splineToLinearHeading(new Pose2d(10,-6, Math.PI), 0.0)
                             .build()
 
             );
@@ -219,22 +221,16 @@ public class AutonomousTensorFlow extends LinearOpMode
             //Grab wobble
             claw.setPosition(0.88);
 
-            drive.turn(-Math.toRadians(120));
-
-
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(22, -6, Math.PI))
-                            .splineToLinearHeading(new Pose2d(10,20, Math.PI), 0.0)
+                    drive.trajectoryBuilder(new Pose2d(15, -6, Math.PI))
+                            .splineToLinearHeading(new Pose2d(-40,50, Math.PI), 0.0)
                             .build()
 
             );
+            drive.turn(-Math.toRadians(45));
+            claw.setPosition(0.5);
 
-            drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(10,20, Math.PI))
-                            .splineToLinearHeading(new Pose2d(0,40, 0), 0.0)
-                            .build()
 
-            );
         }
 
         else if (pipeline.position == SkystoneDeterminationPipeline.RingPosition.ONE) {
