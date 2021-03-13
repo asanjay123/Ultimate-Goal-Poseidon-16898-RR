@@ -116,28 +116,30 @@ public class AutonomousTensorFlow extends LinearOpMode
 
         if (pipeline.position == SkystoneDeterminationPipeline.RingPosition.NONE) {
 
-            wobble.setTargetPosition(initPos-700);
-            wobble.setPower(0.35);
-            wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(62, 22, 0))
                             .splineToLinearHeading(new Pose2d(-5,60,0), 0.0)
                             .build()
             );
 
+            wobble.setTargetPosition(initPos-700);
+            wobble.setPower(0.35);
+            wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             while(wobble.isBusy() && opModeIsActive())
             {
 
                 opModeIsActive();
             }
 
-            drive.turn(Math.toRadians(60));
+            drive.turn(Math.toRadians(75));
 
             sleep(100);
             claw.setPosition(0.5);
             sleep(400);
 
             wobble.setTargetPosition(initPos);
+
             wobble.setPower(0.45);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
@@ -146,12 +148,12 @@ public class AutonomousTensorFlow extends LinearOpMode
                 claw.setPosition(0.88);
                 opModeIsActive();
             }
-            drive.turn(-Math.toRadians(50));
+            drive.turn(-Math.toRadians(65));
 
 
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(0, 62, 0))
-                            .strafeRight(73)
+                            .strafeRight(72)
                             .build()
             );
 
@@ -164,23 +166,26 @@ public class AutonomousTensorFlow extends LinearOpMode
             drive.turn(Math.toRadians(189));
 
             //Shooting rings
+            shooterLeft.setPower(0.94);
+            shooterRight.setPower(-0.94);
+
+            flicker.setPosition(0.65);
+            sleep(900);
+            drive.turn(-Math.toRadians(16));
+            flicker.setPosition(0.11);
+            sleep(800);
+
+            flicker.setPosition(0.65);
+            sleep(900);
+            drive.turn(-Math.toRadians(17));
+            flicker.setPosition(0.11);
+            sleep(900);
+
             shooterLeft.setPower(0.92);
             shooterRight.setPower(-0.92);
 
             flicker.setPosition(0.65);
-            sleep(1000);
-            drive.turn(-Math.toRadians(16));
-            flicker.setPosition(0.11);
             sleep(900);
-
-            flicker.setPosition(0.65);
-            sleep(1000);
-            drive.turn(-Math.toRadians(15));
-            flicker.setPosition(0.11);
-            sleep(900);
-
-            flicker.setPosition(0.65);
-            sleep(1000);
             flicker.setPosition(0.11);
 
             shooterLeft.setPower(0);
@@ -213,7 +218,7 @@ public class AutonomousTensorFlow extends LinearOpMode
 
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(-2, -6, Math.PI))
-                            .splineToLinearHeading(new Pose2d(10,-6, Math.PI), 0.0)
+                            .splineToLinearHeading(new Pose2d(15,-6, Math.PI), 0.0)
                             .build()
 
             );
@@ -223,7 +228,7 @@ public class AutonomousTensorFlow extends LinearOpMode
 
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(15, -6, Math.PI))
-                            .splineToLinearHeading(new Pose2d(-40,50, Math.PI), 0.0)
+                            .splineToLinearHeading(new Pose2d(-35,50, Math.PI), 0.0)
                             .build()
 
             );
@@ -241,7 +246,7 @@ public class AutonomousTensorFlow extends LinearOpMode
 
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(62, 22, 0))
-                            .back(90)
+                            .back(100)
                             .build()
             );
 
@@ -268,15 +273,15 @@ public class AutonomousTensorFlow extends LinearOpMode
 
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(-32, 22, 0))
-                            .forward(15)
+                            .forward(23)
                             .build()
             );
 
             drive.turn(Math.toRadians(185));
 
             //Shooting rings
-            shooterLeft.setPower(0.92);
-            shooterRight.setPower(-0.92);
+            shooterLeft.setPower(0.95);
+            shooterRight.setPower(-0.95);
 
             flicker.setPosition(0.65);
             sleep(1000);
@@ -295,18 +300,171 @@ public class AutonomousTensorFlow extends LinearOpMode
             shooterLeft.setPower(0);
             shooterRight.setPower(0);
 
+
             //Move to wobble
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(-2, 22, Math.PI))
-                            .splineToLinearHeading(new Pose2d(40, -10, Math.PI), 0.0)
+                            .splineToLinearHeading(new Pose2d(25, -24, Math.PI), 0.0)
                             .build()
             );
 
+            //Extending wobble
+            wobble.setTargetPosition(initPos-650);
+            wobble.setPower(0.3);
+            wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            claw.setPosition(0.5);
 
+            while(wobble.isBusy() && opModeIsActive())
+            {
+                opModeIsActive();
+            }
+
+            sleep(50);
+
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(25, -26, Math.PI))
+                            .back(11)
+                            .build()
+            );
+
+            //Grab wobble
+            claw.setPosition(0.88);
+
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(25, -6, Math.PI))
+                            .splineToLinearHeading(new Pose2d(-25,40, Math.PI), 0.0)
+                            .build()
+
+            );
+            drive.turn(-Math.toRadians(170));
+            claw.setPosition(0.5);
 
         }
 
         else if (pipeline.position == SkystoneDeterminationPipeline.RingPosition.FOUR) {
+
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(62, 22, 0))
+                            .splineToLinearHeading(new Pose2d(-50,80,0), 0.0)
+                            .build()
+            );
+
+            wobble.setTargetPosition(initPos-700);
+            wobble.setPower(0.35);
+            wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            while(wobble.isBusy() && opModeIsActive())
+            {
+
+                opModeIsActive();
+            }
+
+            drive.turn(Math.toRadians(75));
+
+            sleep(100);
+            claw.setPosition(0.5);
+            sleep(400);
+
+            wobble.setTargetPosition(initPos);
+
+            wobble.setPower(0.45);
+            wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            while(wobble.isBusy() && opModeIsActive())
+            {
+                claw.setPosition(0.88);
+                opModeIsActive();
+            }
+            drive.turn(-Math.toRadians(65));
+
+
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(-50, 80, 0))
+                            .splineToLinearHeading(new Pose2d(0, 10, 0), 0.0)
+                            .build()
+            );
+
+//            drive.followTrajectory(
+//                    drive.trajectoryBuilder(new Pose2d(0, 62, 0))
+//                            .splineToLinearHeading(new Pose2d(0,-6,0), 0.0)
+//                            .build()
+//            );
+
+            drive.turn(Math.toRadians(186));
+
+            //Shooting rings
+            shooterLeft.setPower(0.92);
+            shooterRight.setPower(-0.92);
+
+            flicker.setPosition(0.65);
+            sleep(900);
+            flicker.setPosition(0.11);
+            sleep(800);
+
+            flicker.setPosition(0.65);
+            sleep(900);
+            flicker.setPosition(0.11);
+            sleep(900);
+
+            shooterLeft.setPower(0.92);
+            shooterRight.setPower(-0.92);
+
+            flicker.setPosition(0.65);
+            sleep(900);
+            flicker.setPosition(0.11);
+
+            shooterLeft.setPower(0);
+            shooterRight.setPower(0);
+
+
+            //Extending wobble
+            wobble.setTargetPosition(initPos-650);
+            wobble.setPower(0.3);
+            wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            //Driving to second wobble
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(0, 40, Math.PI))
+                            .splineToLinearHeading(new Pose2d(20,0, Math.PI), 0.0)
+                            .build()
+
+            );
+            claw.setPosition(0.5);
+
+            while(wobble.isBusy() && opModeIsActive())
+            {
+                opModeIsActive();
+            }
+
+            sleep(50);
+
+            //Adjustment Turn
+//            drive.turn(Math.toRadians(15));
+
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(-2, -6, Math.PI))
+                            .splineToLinearHeading(new Pose2d(15,-6, Math.PI), 0.0)
+                            .build()
+
+            );
+
+            //Grab wobble
+            claw.setPosition(0.88);
+
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(15, -6, Math.PI))
+                            .splineToLinearHeading(new Pose2d(-60,50, Math.PI), 0.0)
+                            .build()
+
+            );
+            drive.turn(-Math.toRadians(90));
+            claw.setPosition(0.5);
+
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(15, -6, Math.PI))
+                            .strafeLeft(50)
+                            .build()
+
+            );
 
         }
 
@@ -337,7 +495,7 @@ public class AutonomousTensorFlow extends LinearOpMode
         /*
          * The core values which define the location and size of the sample regions
          */
-        static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(90,142);
+        static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(95,150);
 
         static final int REGION_WIDTH = 35;
         static final int REGION_HEIGHT = 25;
