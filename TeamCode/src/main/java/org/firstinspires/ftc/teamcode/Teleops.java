@@ -124,12 +124,12 @@ public class Teleops extends OpMode {
         //Wobble Arm controls
         if (gamepad2.right_bumper){
             wobble.setTargetPosition(initPos-700);
-            wobble.setPower(-0.1);
+            wobble.setPower(-0.3);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         if (gamepad2.left_bumper){
             wobble.setTargetPosition(initPos);
-            wobble.setPower(0.1);
+            wobble.setPower(0.3);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         }
@@ -139,26 +139,11 @@ public class Teleops extends OpMode {
 
         //Claw controls
         if (gamepad2.x)
+            //close
             claw.setPosition(0.88);
         if (gamepad2.y)
+            //open
             claw.setPosition(0.5);
-
-        //Shooter controls
-//        if (gamepad1.left_bumper) {
-//            shooterLeft.setPower(0);
-//            shooterRight.setPower(0);
-//        }
-//
-//
-//        if (gamepad1.right_bumper && (shooterLeft.getPower() == med || shooterLeft.getPower() == 0)) {
-//                shooterLeft.setPower(high);
-//                shooterRight.setPower(-high);
-//        }
-//        else if (gamepad1.right_bumper && shooterLeft.getPower() == high)
-//        {
-//            shooterLeft.setPower(med);
-//            shooterRight.setPower(-med);
-//        }
 
         //fly wheel power controls
         if (gamepad1.left_bumper)

@@ -15,6 +15,11 @@ org/firstinspires/ftc/teamcode/drive/opmode/BackAndForth.java
  org.firstinspires.ftc.teamcode.drive.opmode.BackAndForth
 org/firstinspires/ftc/teamcode/drive/opmode/AutomaticFeedforwardTuner.java
  org.firstinspires.ftc.teamcode.drive.opmode.AutomaticFeedforwardTuner
+org/firstinspires/ftc/teamcode/drive/Roadrunner/AutonomousOpenCV3.java
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousOpenCV3
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousOpenCV3$1
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousOpenCV3$SkystoneDeterminationPipeline
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousOpenCV3$SkystoneDeterminationPipeline$RingPosition
 org/firstinspires/ftc/teamcode/drive/opmode/MaxAngularVeloTuner.java
  org.firstinspires.ftc.teamcode.drive.opmode.MaxAngularVeloTuner
 org/firstinspires/ftc/teamcode/drive/opmode/TurnTest.java
