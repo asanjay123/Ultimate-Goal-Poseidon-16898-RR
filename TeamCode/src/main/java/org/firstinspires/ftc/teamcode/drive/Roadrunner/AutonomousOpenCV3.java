@@ -46,6 +46,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
 @Autonomous(name = "Main Auto")
+@Disabled
 public class AutonomousOpenCV3 extends LinearOpMode
 {
     OpenCvInternalCamera phoneCam;

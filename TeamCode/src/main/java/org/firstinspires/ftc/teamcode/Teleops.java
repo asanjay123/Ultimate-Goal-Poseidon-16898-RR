@@ -25,7 +25,7 @@ public class Teleops extends OpMode {
     Servo claw;
     Servo stack;
 
-    double high = 20;
+    double high = 0.5;
     double shot = 0.96;
 
 
@@ -61,7 +61,7 @@ public class Teleops extends OpMode {
         backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         nitro = 2.0;
-        flicker.setPosition(0.14);
+        flicker.setPosition(0.8);
 //
 
     }
@@ -184,6 +184,7 @@ public class Teleops extends OpMode {
             flicker.setPosition(0.11);
         }
 
+
         //stack servo controls
         if (gamepad2.left_trigger > 0) {
             stack.setPosition(0.70);
@@ -191,7 +192,6 @@ public class Teleops extends OpMode {
         else {
             stack.setPosition(0.97);
         }
-
 
     }
 }
