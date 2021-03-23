@@ -25,7 +25,7 @@ public class Teleops extends OpMode {
     Servo claw;
     Servo stack;
 
-    double high = 0.5;
+    double high = 0.2;
     double shot = 0.96;
 
 
@@ -61,7 +61,7 @@ public class Teleops extends OpMode {
         backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         nitro = 2.0;
-        flicker.setPosition(0.8);
+        flicker.setPosition(0.11);
 //
 
     }
@@ -158,8 +158,8 @@ public class Teleops extends OpMode {
         }
         if (gamepad1.dpad_right)
         {
-            shooterLeft.setPower(0.93);
-            shooterRight.setPower(-0.93);
+            shooterLeft.setPower(0.9);
+            shooterRight.setPower(-0.9);
         }
         if (gamepad1.dpad_left)
         {
@@ -168,8 +168,8 @@ public class Teleops extends OpMode {
         }
         if (gamepad1.dpad_up)
         {
-            shooterLeft.setPower(0.88);
-            shooterRight.setPower(-0.88);
+            shooterLeft.setPower(0.85);
+            shooterRight.setPower(-0.85);
         }if (gamepad1.dpad_down)
         {
             shooterLeft.setPower(0.97);

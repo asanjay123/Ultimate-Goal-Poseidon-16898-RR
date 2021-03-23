@@ -116,142 +116,6 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
         //TODO Position C----------------------------------------------------------------------------------------
 
-        //go forward and shoot rings
-        drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                        .forward(73)
-                        .build()
-        );
-
-        drive.turn(-Math.toRadians(25));
-
-        drive.setPoseEstimate(new Pose2d(13, 16, 0));
-
-        shooterLeft.setPower(0.94);
-        shooterRight.setPower(-0.94);
-
-        flicker.setPosition(0.65);
-        sleep(800);
-        flicker.setPosition(0.11);
-        sleep(900);
-        stack.setPosition(0.7);
-        sleep(300);
-        stack.setPosition(0.97);
-        sleep(400);
-
-        flicker.setPosition(0.65);
-        sleep(800);
-        flicker.setPosition(0.11);
-        sleep(900);
-
-
-        flicker.setPosition(0.65);
-        sleep(800);
-        flicker.setPosition(0.11);
-        sleep(900);
-
-        shooterLeft.setPower(0);
-        shooterRight.setPower(0);
-
-        //drop wobble
-        drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(13, 16, 4.71))
-                        .strafeRight(40)
-                        .build()
-        );
-        drive.turn(Math.toRadians(20));
-
-        drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(13, 16, 4.71))
-                        .forward(50)
-                        .build()
-        );
-
-        drive.turn(-Math.toRadians(90));
-
-
-        wobble.setTargetPosition(initPos-650);
-        wobble.setPower(-0.45);
-        wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        sleep(200);
-
-        while(wobble.isBusy() && opModeIsActive())
-        {
-            opModeIsActive();
-        }
-
-        claw.setPosition(0.5);
-        sleep(300);
-
-        wobble.setTargetPosition(initPos);
-        wobble.setPower(0.45);
-        wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        while(wobble.isBusy() && opModeIsActive())
-        {
-            claw.setPosition(0.88);
-            opModeIsActive();
-        }
-
-        drive.setPoseEstimate(new Pose2d(13, 16, 4.71));
-
-        //back up after dropping wobble and turn
-
-        drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(13, 16, 4.71))
-                        .forward(42)
-                        .build()
-        );
-
-        drive.turn(Math.toRadians(135));
-
-        //pick up second wobble
-
-        drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(13, 26, 3.14))
-                        .back(13)
-                        .build()
-        );
-
-        claw.setPosition(0.88);
-        sleep(300);
-
-        //drop off second wobble
-
-        drive.setPoseEstimate(new Pose2d(-27, 26, 3.14));
-
-        drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(-27, 26, 3.14))
-                        .forward(52)
-                        .build()
-        );
-
-        drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(-27, 26, 3.14))
-                        .strafeRight(60)
-                        .build()
-        );
-
-        drive.turn(-Math.toRadians(90));
-        claw.setPosition(0.5);
-        sleep(500);
-
-        drive.turn(Math.toRadians(5));
-
-
-
-        wobble.setTargetPosition(initPos);
-        wobble.setPower(0.45);
-        wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        while(wobble.isBusy() && opModeIsActive())
-        {
-            claw.setPosition(0.88);
-            opModeIsActive();
-        }
-
-
-
 
 
 //TODO: POSITION A---------------------------------------------------------------------------------------------------------------------------------------
@@ -259,51 +123,46 @@ public class AutonomousOpenCV4 extends LinearOpMode
         if (pipeline.position == SkystoneDeterminationPipeline.RingPosition.NONE) {
 
 
-            // go forward and shoot rings
-            drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                            .forward(73)
-                            .build()
-            );
-
-            drive.turn(-Math.toRadians(22));
-
-            drive.setPoseEstimate(new Pose2d(13, 16, 0));
+            //Shoot rings
+            drive.setPoseEstimate(new Pose2d(-60, 16, 0));
 
             shooterLeft.setPower(0.94);
             shooterRight.setPower(-0.94);
 
             flicker.setPosition(0.65);
-            sleep(800);
+            sleep(300);
             flicker.setPosition(0.11);
-            sleep(900);
+            sleep(300);
             stack.setPosition(0.7);
             sleep(300);
             stack.setPosition(0.97);
             sleep(400);
 
             flicker.setPosition(0.65);
-            sleep(800);
+            sleep(300);
             flicker.setPosition(0.11);
-            sleep(900);
+            sleep(300);
             stack.setPosition(0.7);
             sleep(300);
             stack.setPosition(0.97);
             sleep(400);
 
-            shooterLeft.setPower(0.96);
-            shooterRight.setPower(-0.96);
-
             flicker.setPosition(0.65);
-            sleep(800);
+            sleep(300);
             flicker.setPosition(0.11);
-            sleep(900);
+            sleep(300);
 
             shooterLeft.setPower(0);
             shooterRight.setPower(0);
 
+            //Drive to Position A
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(-60, 16, 4.71))
+                            .splineToLinearHeading(new Pose2d(10, 20, 4.71), 0.0)
+                            .build()
+            );
+
             //drop wobble
-            drive.turn(-Math.toRadians(135));
 
             wobble.setTargetPosition(initPos-650);
             wobble.setPower(-0.45);
@@ -318,23 +177,24 @@ public class AutonomousOpenCV4 extends LinearOpMode
             claw.setPosition(0.5);
             sleep(300);
 
-            drive.setPoseEstimate(new Pose2d(13, 16, 4.71));
+//            drive.setPoseEstimate(new Pose2d(13, 16, 4.71));
 
-            //back up after dropping wobble and turn
-
+            //Back up after dropping wobble
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(13, 16, 4.71))
-                            .forward(42)
+                            .forward(20)
                             .build()
             );
 
-            drive.turn(Math.toRadians(130));
-
-            //pick up second wobble
-
+            //Pick up second wobble
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(13, 16, 4.71))
+                            .strafeLeft(50)
+                            .build()
+            );
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(13, 26, 3.14))
-                            .back(13)
+                            .back(50)
                             .build()
             );
 
@@ -342,18 +202,11 @@ public class AutonomousOpenCV4 extends LinearOpMode
             sleep(300);
 
             //drop off second wobble
-
-            drive.setPoseEstimate(new Pose2d(-27, 26, 3.14));
+//            drive.setPoseEstimate(new Pose2d(-27, 26, 3.14));
 
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(-27, 26, 3.14))
-                            .forward(52)
-                            .build()
-            );
-
-            drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(25, 26, 3.14))
-                            .strafeRight(60)
+                            .splineToLinearHeading(new Pose2d(10, 20, 4.71), 0.0)
                             .build()
             );
 
@@ -363,12 +216,9 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
             drive.turn(Math.toRadians(5));
 
-
-
             wobble.setTargetPosition(initPos);
             wobble.setPower(0.45);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
             while(wobble.isBusy() && opModeIsActive())
             {
                 claw.setPosition(0.88);
@@ -378,17 +228,9 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
         }
 
-        //TODO: POSITION B (FINALIZED)---------------------------------------------------------------------------------------------------------
+        //TODO: POSITION B---------------------------------------------------------------------------------------------------------
 
         else if (pipeline.position == SkystoneDeterminationPipeline.RingPosition.ONE) {
-
-            drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                            .forward(73)
-                            .build()
-            );
-
-            //drive.turn(-Math.toRadians(25));
 
             drive.setPoseEstimate(new Pose2d(13, 16, 0));
 
@@ -396,38 +238,58 @@ public class AutonomousOpenCV4 extends LinearOpMode
             shooterRight.setPower(-0.94);
 
             flicker.setPosition(0.65);
-            sleep(800);
+            sleep(300);
             flicker.setPosition(0.11);
-            sleep(900);
+            sleep(300);
             stack.setPosition(0.7);
             sleep(300);
             stack.setPosition(0.97);
             sleep(400);
 
             flicker.setPosition(0.65);
-            sleep(800);
+            sleep(300);
             flicker.setPosition(0.11);
-            sleep(900);
+            sleep(300);
             stack.setPosition(0.7);
             sleep(300);
             stack.setPosition(0.97);
             sleep(400);
 
             flicker.setPosition(0.65);
-            sleep(800);
+            sleep(300);
             flicker.setPosition(0.11);
-            sleep(900);
+            sleep(300);
 
             shooterLeft.setPower(0);
             shooterRight.setPower(0);
 
-            //drop wobble
+            //Pick up ring manuever
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                            .forward(60)
+                            .forward(15)
+                            .build()
+            );
+            drive.turn(Math.toRadians(180));
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
+                            .forward(15)
                             .build()
             );
 
+            //Turn on intake
+            intake.setPower(-1);
+
+            //Move into ring on the way to wobble
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
+                            .back(70)
+                            .build()
+            );
+
+            //Turn off intake
+            intake.setPower(0);
+
+            //Drop wobble
             wobble.setTargetPosition(initPos-650);
             wobble.setPower(-0.45);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -441,40 +303,50 @@ public class AutonomousOpenCV4 extends LinearOpMode
             claw.setPosition(0.5);
             sleep(300);
 
-            drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                            .forward(10)
-                            .build()
-            );
-
-            drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                            .strafeLeft(51)
-                            .build()
-            );
-
+            //Move to shooting position
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
                             .forward(20)
                             .build()
             );
+            drive.turn(Math.toRadians(180));
+
+            //Shoot ring
+            shooterLeft.setPower(0.7);
+            shooterRight.setPower(-0.7);
+            stack.setPosition(0.7);
+            sleep(300);
+            stack.setPosition(0.97);
+            sleep(400);
+            flicker.setPosition(0.65);
+            sleep(300);
+            flicker.setPosition(0.11);
+            sleep(300);
+            shooterLeft.setPower(0);
+            shooterRight.setPower(-0);
+
+            //Drive to second wobble
+            drive.followTrajectory(
+                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
+                            .strafeLeft(30)
+                            .build()
+            );
 
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                            .back(100)
+                            .back(40)
                             .build()
             );
+
 
             claw.setPosition(0.88);
-
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(25, -6, Math.PI))
-                            .forward(60)
+                            .splineToLinearHeading(new Pose2d(10, 20, 4.71), 0.0)
                             .build()
 
             );
 
-//
 
             drive.turn(-Math.toRadians(130));
             claw.setPosition(0.5);
