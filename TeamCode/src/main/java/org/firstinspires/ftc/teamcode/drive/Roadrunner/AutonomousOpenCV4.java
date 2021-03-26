@@ -130,26 +130,22 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
             shooterLeft.setPower(power);
             shooterRight.setPower(-power);
+            sleep(1500);
 
-            flicker.setPosition(0.65);
+            flicker.setPosition(0.4);
             sleep(300);
             flicker.setPosition(0.11);
             sleep(300);
-            stack.setPosition(0.7);
-            sleep(300);
-            stack.setPosition(0.97);
-            sleep(400);
 
-            flicker.setPosition(0.65);
+
+
+            flicker.setPosition(0.4);
             sleep(300);
             flicker.setPosition(0.11);
             sleep(300);
-            stack.setPosition(0.7);
-            sleep(300);
-            stack.setPosition(0.97);
-            sleep(400);
 
-            flicker.setPosition(0.65);
+
+            flicker.setPosition(0.4);
             sleep(300);
             flicker.setPosition(0.11);
             sleep(300);
@@ -160,9 +156,11 @@ public class AutonomousOpenCV4 extends LinearOpMode
             //Drive to Position A
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(-60, -16, 0))
-                            .splineToLinearHeading(new Pose2d(10, -16, 0), 0.0)
+                            .forward(60)
                             .build()
             );
+
+            drive.turn(-Math.toRadians(90));
 
             //drop wobble
 
