@@ -62,6 +62,8 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
     int initPos;
 
+    double power = 0.5;
+
     /*     pi
            |
   3pi/2  ----- pi/2
@@ -124,10 +126,10 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
 
             //Shoot rings
-            drive.setPoseEstimate(new Pose2d(-60, 16, 0));
+            drive.setPoseEstimate(new Pose2d(-60, -16, 0));
 
-            shooterLeft.setPower(0.94);
-            shooterRight.setPower(-0.94);
+            shooterLeft.setPower(power);
+            shooterRight.setPower(-power);
 
             flicker.setPosition(0.65);
             sleep(300);
@@ -157,8 +159,8 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
             //Drive to Position A
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(-60, 16, 4.71))
-                            .splineToLinearHeading(new Pose2d(10, 20, 4.71), 0.0)
+                    drive.trajectoryBuilder(new Pose2d(-60, -16, 0))
+                            .splineToLinearHeading(new Pose2d(10, -16, 0), 0.0)
                             .build()
             );
 
@@ -181,20 +183,20 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
             //Back up after dropping wobble
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(13, 16, 4.71))
+                    drive.trajectoryBuilder(new Pose2d(10, -16, 0))
                             .forward(20)
                             .build()
             );
 
             //Pick up second wobble
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(13, 16, 4.71))
+                    drive.trajectoryBuilder(new Pose2d(30, -16, 0))
                             .strafeLeft(50)
                             .build()
             );
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(13, 26, 3.14))
-                            .back(50)
+                    drive.trajectoryBuilder(new Pose2d(30, 34, 0))
+                            .back(70)
                             .build()
             );
 
@@ -205,8 +207,8 @@ public class AutonomousOpenCV4 extends LinearOpMode
 //            drive.setPoseEstimate(new Pose2d(-27, 26, 3.14));
 
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(-27, 26, 3.14))
-                            .splineToLinearHeading(new Pose2d(10, 20, 4.71), 0.0)
+                    drive.trajectoryBuilder(new Pose2d(-40, 34, 0))
+                            .splineToLinearHeading(new Pose2d(0, -16, 0), 0.0)
                             .build()
             );
 
@@ -234,8 +236,8 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
             drive.setPoseEstimate(new Pose2d(13, 16, 0));
 
-            shooterLeft.setPower(0.94);
-            shooterRight.setPower(-0.94);
+            shooterLeft.setPower(power);
+            shooterRight.setPower(power);
 
             flicker.setPosition(0.65);
             sleep(300);
@@ -263,15 +265,19 @@ public class AutonomousOpenCV4 extends LinearOpMode
             shooterLeft.setPower(0);
             shooterRight.setPower(0);
 
-            //Pick up ring manuever
+            //Go forward
             drive.followTrajectory(
                     drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
                             .forward(15)
                             .build()
             );
+
+            //turn
             drive.turn(Math.toRadians(180));
+
+            //Move back
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
+                    drive.trajectoryBuilder(new Pose2d(-45, 16, 3.14))
                             .forward(15)
                             .build()
             );
@@ -281,8 +287,8 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
             //Move into ring on the way to wobble
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                            .back(70)
+                    drive.trajectoryBuilder(new Pose2d(-60, 16, 3.14))
+                            .back(80)
                             .build()
             );
 
@@ -305,15 +311,15 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
             //Move to shooting position
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
+                    drive.trajectoryBuilder(new Pose2d(20, 16, 3.14))
                             .forward(20)
                             .build()
             );
             drive.turn(Math.toRadians(180));
 
             //Shoot ring
-            shooterLeft.setPower(0.7);
-            shooterRight.setPower(-0.7);
+            shooterLeft.setPower(power - 0.2);
+            shooterRight.setPower(power - 0.2);
             stack.setPosition(0.7);
             sleep(300);
             stack.setPosition(0.97);
@@ -323,26 +329,28 @@ public class AutonomousOpenCV4 extends LinearOpMode
             flicker.setPosition(0.11);
             sleep(300);
             shooterLeft.setPower(0);
-            shooterRight.setPower(-0);
+            shooterRight.setPower(0);
 
             //Drive to second wobble
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                            .strafeLeft(30)
+                    drive.trajectoryBuilder(new Pose2d(0, 16, 0))
+                            .strafeLeft(20)
                             .build()
             );
 
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
+                    drive.trajectoryBuilder(new Pose2d(0, 36, 0))
                             .back(40)
                             .build()
             );
 
-
+            //pick up second wobble
             claw.setPosition(0.88);
+
+            //drop off second wobble
             drive.followTrajectory(
-                    drive.trajectoryBuilder(new Pose2d(25, -6, Math.PI))
-                            .splineToLinearHeading(new Pose2d(10, 20, 4.71), 0.0)
+                    drive.trajectoryBuilder(new Pose2d(-40, 36, 0))
+                            .splineToLinearHeading(new Pose2d(10, 20, 3.14), 0.0)
                             .build()
 
             );
@@ -425,8 +433,8 @@ public class AutonomousOpenCV4 extends LinearOpMode
             drive.turn(Math.toRadians(184));
 
             //Shooting rings
-            shooterLeft.setPower(0.92);
-            shooterRight.setPower(-0.92);
+            shooterLeft.setPower(power);
+            shooterRight.setPower(power);
 
             flicker.setPosition(0.65);
             sleep(900);
