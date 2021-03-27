@@ -25,8 +25,8 @@ public class Teleops extends OpMode {
     Servo claw;
     Servo stack;
 
-    double high = 0.5;
-    double shot = 0.96;
+    double high = 20;
+    double shot = 0.4;
 
 
 
@@ -158,8 +158,8 @@ public class Teleops extends OpMode {
         }
         if (gamepad1.dpad_right)
         {
-            shooterLeft.setPower(0.45);
-            shooterRight.setPower(-0.45);
+            shooterLeft.setPower(shot);
+            shooterRight.setPower(-shot);
         }
         if (gamepad1.dpad_down)
         {
