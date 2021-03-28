@@ -66,6 +66,11 @@ org/firstinspires/ftc/teamcode/drive/opmode/SplineTest.java
  org.firstinspires.ftc.teamcode.drive.opmode.SplineTest
 org/firstinspires/ftc/teamcode/drive/StandardTrackingWheelLocalizer.java
  org.firstinspires.ftc.teamcode.drive.StandardTrackingWheelLocalizer
+org/firstinspires/ftc/teamcode/drive/Roadrunner/AutonomousOpenCV5.java
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousOpenCV5
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousOpenCV5$1
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousOpenCV5$SkystoneDeterminationPipeline
+ org.firstinspires.ftc.teamcode.drive.Roadrunner.AutonomousOpenCV5$SkystoneDeterminationPipeline$RingPosition
 org/firstinspires/ftc/teamcode/util/LoggingUtil.java
  org.firstinspires.ftc.teamcode.util.LoggingUtil
 org/firstinspires/ftc/teamcode/util/AxesSigns.java

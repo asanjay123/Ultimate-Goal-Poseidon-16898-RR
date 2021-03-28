@@ -179,7 +179,7 @@ public class Teleops extends OpMode {
 
         //flicker servo controls
         if (gamepad2.right_trigger > 0) {
-            flicker.setPosition(0.38);
+            flicker.setPosition(0.33);
         }
         else {
             flicker.setPosition(0.11);
