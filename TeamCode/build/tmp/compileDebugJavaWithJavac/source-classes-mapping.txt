@@ -36,6 +36,7 @@ org/firstinspires/ftc/teamcode/drive/opmode/TrackingWheelLateralDistanceTuner.ja
  org.firstinspires.ftc.teamcode.drive.opmode.TrackingWheelLateralDistanceTuner
 org/firstinspires/ftc/teamcode/Teleops.java
  org.firstinspires.ftc.teamcode.Teleops
+ org.firstinspires.ftc.teamcode.Teleops$1
 org/firstinspires/ftc/teamcode/util/BNO055IMUUtil.java
  org.firstinspires.ftc.teamcode.util.BNO055IMUUtil
 org/firstinspires/ftc/teamcode/util/AssetsTrajectoryManager.java

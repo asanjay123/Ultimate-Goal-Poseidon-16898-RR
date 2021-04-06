@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name = "Teleops", group = "")
 public class Teleops extends OpMode {
@@ -24,11 +25,14 @@ public class Teleops extends OpMode {
     Servo flicker;
     Servo claw;
     Servo stack;
+    Servo wall1;
+    Servo wall2;
 
-    double high = 20;
-    double shot = 0.4;
+    double high = 1;
 
+    ElapsedTime timer = new ElapsedTime();
 
+    boolean moving = false;
 
     double nitro;
 
@@ -49,6 +53,9 @@ public class Teleops extends OpMode {
         flicker = hardwareMap.servo.get("pusher");
         claw = hardwareMap.servo.get("clamp");
         stack = hardwareMap.servo.get("stack");
+        wall1 = hardwareMap.servo.get("wall1");
+        wall2 = hardwareMap.servo.get("wall2");
+
         shooterLeft = hardwareMap.dcMotor.get("flywheelleft");
         shooterRight = hardwareMap.dcMotor.get("flywheelright");
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -62,18 +69,22 @@ public class Teleops extends OpMode {
 
         nitro = 2.0;
         flicker.setPosition(0.11);
-//
+        wall1.setPosition(0.64);
+        wall2.setPosition(0.06);
 
     }
 
     @Override
     public void loop() {
 
-        telemetry.addData("Stack pos: ", stack.getPosition());
+        telemetry.addData("wall1 pos: ", wall1.getPosition());
         telemetry.update();
 
-        telemetry.addData("Nitro: ", (nitro == 1) ? "High":( (nitro==2) ? "Medium":"Low"));
+        telemetry.addData("wall2 pos: ", wall2.getPosition());
         telemetry.update();
+
+//        telemetry.addData("Nitro: ", (nitro == 1) ? "High":( (nitro==2) ? "Medium":"Low"));
+//        telemetry.update();
 
         //Intake controls
         if (gamepad1.x) {
@@ -90,8 +101,8 @@ public class Teleops extends OpMode {
         }
 
         //Drive controls
-        drive = -gamepad1.left_stick_y;
-        strafe = gamepad1.left_stick_x;
+        drive = gamepad1.left_stick_y;
+        strafe = -gamepad1.left_stick_x;
         rotate = gamepad1.right_stick_x;
 
         double frontLeftPower = drive + strafe - rotate;
@@ -134,9 +145,6 @@ public class Teleops extends OpMode {
 
         }
 
-        wobble.getCurrentPosition();
-        telemetry.addData("Position: ", wobble.getCurrentPosition());
-
         //Claw controls
         if (gamepad2.x)
             //close
@@ -158,33 +166,97 @@ public class Teleops extends OpMode {
         }
         if (gamepad1.dpad_right)
         {
-            shooterLeft.setPower(shot);
-            shooterRight.setPower(-shot);
+            shooterLeft.setPower(0.95);
+            shooterRight.setPower(-0.95);
         }
         if (gamepad1.dpad_down)
         {
-            shooterLeft.setPower(0.4);
-            shooterRight.setPower(-0.4);
+            shooterLeft.setPower(0.9);
+            shooterRight.setPower(-0.9);
         }
         if (gamepad1.dpad_left)
         {
-            shooterLeft.setPower(0.35);
-            shooterRight.setPower(-0.35);
+            shooterLeft.setPower(0.85);
+            shooterRight.setPower(-0.85);
         }
         if (gamepad1.dpad_up)
         {
-            shooterLeft.setPower(0.3);
-            shooterRight.setPower(-0.3);
+            shooterLeft.setPower(0.8);
+            shooterRight.setPower(-0.8);
         }
 
         //flicker servo controls
         if (gamepad2.right_trigger > 0) {
-            flicker.setPosition(0.37);
+            flicker.setPosition(0.35);
         }
         else {
             flicker.setPosition(0.11);
         }
 
+//        if (gamepad2.a && !moving) {
+//            moving = true;
+//            for (int i = 0; i < 3; i++)
+//            {
+//                flicker.setPosition(0.35);
+//                sleep(0.6);
+//                flicker.setPosition(0.11);
+//                sleep(0.6);
+//
+//            }
+//            moving = false;
+//        }
+
+        if (gamepad2.a && !moving)
+        {
+            moving = true;
+            Thread flickMove = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        flicker.setPosition(0.33);
+                        try {
+                            Thread.sleep(600);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        flicker.setPosition(0.11);
+                        try {
+                            Thread.sleep(600);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    moving = false;
+                }
+            }
+            );
+
+            flickMove.start();
+            flickMove.run();
+
+        }
+
+        //ring collection walls down
+        if (gamepad2.dpad_right)
+        {
+            wall1.setPosition(0.15);
+            wall2.setPosition(0.51);
+        }
+
+        //ring collection walls up
+        if (gamepad2.dpad_left)
+        {
+            wall1.setPosition(0.64);
+            wall2.setPosition(0.06);
+        }
 
         //stack servo controls
         if (gamepad2.left_trigger > 0) {
@@ -194,5 +266,12 @@ public class Teleops extends OpMode {
             stack.setPosition(0.97);
         }
 
+    }
+
+    public void sleep(double waitTime){
+        timer.reset();
+        while ((timer.time() < waitTime)) {
+
+        }
     }
 }
