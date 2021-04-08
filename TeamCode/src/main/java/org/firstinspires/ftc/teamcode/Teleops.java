@@ -33,6 +33,7 @@ public class Teleops extends OpMode {
     ElapsedTime timer = new ElapsedTime();
 
     boolean moving = false;
+    boolean powerShotTurn = false;
 
     double nitro;
 
@@ -69,9 +70,30 @@ public class Teleops extends OpMode {
 
         nitro = 2.0;
         flicker.setPosition(0.11);
-        wall1.setPosition(0.64);
-        wall2.setPosition(0.06);
+        wall1.setPosition(0.61);
+        wall2.setPosition(0.15);
 
+
+
+    }
+
+    public void sleep(double waitTime){
+        timer.reset();
+        while ((timer.milliseconds() < waitTime)) {
+
+        }
+    }
+
+    public void motorPower (){
+        double frontLeftPower = drive + strafe - rotate;
+        double backLeftPower = drive - strafe - rotate;
+        double frontRightPower = drive - strafe + rotate;
+        double backRightPower = drive + strafe + rotate;
+
+        frontLeft.setPower(frontLeftPower/nitro);
+        backLeft.setPower(backLeftPower/nitro);
+        frontRight.setPower(frontRightPower/nitro);
+        backRight.setPower(backRightPower/nitro);
     }
 
     @Override
@@ -87,58 +109,42 @@ public class Teleops extends OpMode {
 //        telemetry.update();
 
         //Intake controls
-        if (gamepad1.x) {
+        if (gamepad1.dpad_up) {
             intake.setPower(-1);
         }
-        if (gamepad1.b) {
-            intake.setPower(-0.75);
-        }
-        if (gamepad1.y) {
+        if (gamepad1.dpad_down) {
             intake.setPower(0);
-        }
-        if (gamepad1.a) {
-            intake.setPower(1);
         }
 
         //Drive controls
-        drive = gamepad1.left_stick_y;
-        strafe = -gamepad1.left_stick_x;
-        rotate = gamepad1.right_stick_x;
+        if (!powerShotTurn && !powerShotTurn){
+            drive = gamepad1.left_stick_y;
+            strafe = -gamepad1.left_stick_x;
+            rotate = gamepad1.right_stick_x;
+        }
 
-        double frontLeftPower = drive + strafe - rotate;
-        double backLeftPower = drive - strafe - rotate;
-        double frontRightPower = drive - strafe + rotate;
-        double backRightPower = drive + strafe + rotate;
-
-        frontLeft.setPower(frontLeftPower/nitro);
-        backLeft.setPower(backLeftPower/nitro);
-        frontRight.setPower(frontRightPower/nitro);
-        backRight.setPower(backRightPower/nitro);
+        motorPower();
 
         //Nitro controls
-        if (gamepad1.a){
+        if (gamepad1.right_trigger > 0) {
             nitro = 1;
         }
-        else if (gamepad1.b){
-            nitro = 2;
-        }
-
-        if (gamepad1.left_trigger > 0){
-            nitro = 4;
-        }else if (gamepad1.right_trigger > 0) {
-            nitro = 1;
-        }
-        else{
-            nitro = 2;
+        else {
+            if (gamepad1.y) {
+                nitro = 4;
+            }
+            else {
+                nitro = 2;
+            }
         }
 
         //Wobble Arm controls
-        if (gamepad2.right_bumper){
+        if (gamepad1.right_bumper){
             wobble.setTargetPosition(initPos-700);
             wobble.setPower(-0.3);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
-        if (gamepad2.left_bumper){
+        if (gamepad1.left_bumper){
             wobble.setTargetPosition(initPos);
             wobble.setPower(0.3);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -154,35 +160,15 @@ public class Teleops extends OpMode {
             claw.setPosition(0.5);
 
         //fly wheel power controls
-        if (gamepad1.left_bumper)
+        if (gamepad2.left_bumper)
         {
             shooterLeft.setPower(0);
             shooterRight.setPower(0);
         }
-        if (gamepad1.right_bumper)
+        if (gamepad2.right_bumper)
         {
             shooterLeft.setPower(high);
             shooterRight.setPower(-high);
-        }
-        if (gamepad1.dpad_right)
-        {
-            shooterLeft.setPower(0.95);
-            shooterRight.setPower(-0.95);
-        }
-        if (gamepad1.dpad_down)
-        {
-            shooterLeft.setPower(0.9);
-            shooterRight.setPower(-0.9);
-        }
-        if (gamepad1.dpad_left)
-        {
-            shooterLeft.setPower(0.85);
-            shooterRight.setPower(-0.85);
-        }
-        if (gamepad1.dpad_up)
-        {
-            shooterLeft.setPower(0.8);
-            shooterRight.setPower(-0.8);
         }
 
         //flicker servo controls
@@ -205,6 +191,54 @@ public class Teleops extends OpMode {
 //            }
 //            moving = false;
 //        }
+
+        //powershot turns
+        if (gamepad2.b && !powerShotTurn)
+        {
+            powerShotTurn = true;
+            double power = 0.8;
+            double time = 180;
+
+            //shoot middle
+            flicker.setPosition(0.33);
+            sleep(600);
+            flicker.setPosition(0.11);
+            sleep(600);
+
+            //turn right
+            rotate = power;
+            motorPower();
+            sleep(time/2);
+            rotate = 0;
+            motorPower();
+
+            //shoot right
+            flicker.setPosition(0.33);
+            sleep(600);
+            flicker.setPosition(0.11);
+            sleep(600);
+
+            //turn left
+            rotate = -power;
+            motorPower();
+            sleep(time);
+            rotate = 0;
+            motorPower();
+
+            //shoot left
+            flicker.setPosition(0.33);
+            sleep(600);
+            flicker.setPosition(0.11);
+            sleep(600);
+
+            rotate = power;
+            motorPower();
+            sleep(time/2);
+            rotate = 0;
+            motorPower();
+
+            powerShotTurn = false;
+        }
 
         if (gamepad2.a && !moving)
         {
@@ -248,30 +282,23 @@ public class Teleops extends OpMode {
         if (gamepad2.dpad_right)
         {
             wall1.setPosition(0.15);
-            wall2.setPosition(0.51);
+            wall2.setPosition(0.59);
         }
 
         //ring collection walls up
         if (gamepad2.dpad_left)
         {
-            wall1.setPosition(0.64);
-            wall2.setPosition(0.06);
+            wall1.setPosition(0.61);
+            wall2.setPosition(0.15);
         }
 
         //stack servo controls
-        if (gamepad2.left_trigger > 0) {
+        if (gamepad1.left_trigger > 0) {
             stack.setPosition(0.70);
         }
         else {
             stack.setPosition(0.97);
         }
 
-    }
-
-    public void sleep(double waitTime){
-        timer.reset();
-        while ((timer.time() < waitTime)) {
-
-        }
     }
 }
