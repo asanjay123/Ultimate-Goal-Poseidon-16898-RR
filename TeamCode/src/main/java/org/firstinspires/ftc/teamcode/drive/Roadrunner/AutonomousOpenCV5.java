@@ -22,6 +22,12 @@
 package org.firstinspires.ftc.teamcode.drive.Roadrunner;
 
 import com.acmerobotics.roadrunner.geometry.Vector2d;
+import com.acmerobotics.roadrunner.trajectory.constraints.AngularVelocityConstraint;
+import com.acmerobotics.roadrunner.trajectory.constraints.MinVelocityConstraint;
+import com.acmerobotics.roadrunner.trajectory.constraints.ProfileAccelerationConstraint;
+import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryAccelerationConstraint;
+import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryVelocityConstraint;
+import com.acmerobotics.roadrunner.trajectory.constraints.TranslationalVelocityConstraint;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -45,6 +51,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+
+import java.util.Arrays;
 
 @Autonomous(name = "Power Shot Auto")
 public class AutonomousOpenCV5 extends LinearOpMode
@@ -118,35 +126,12 @@ public class AutonomousOpenCV5 extends LinearOpMode
         telemetry.update();
         waitForStart();
 
-//        drive.followTrajectory(
-//                drive.trajectoryBuilder(new Pose2d(-47, -1, 0))
-//                        .splineToLinearHeading( new Pose2d(23,-1, 0), 0.0)
-//                        .build()
-//        );
-//
-//        drive.followTrajectory(
-//                drive.trajectoryBuilder(new Pose2d(23, -1, 0))
-//                        .splineToLinearHeading( new Pose2d(-47,-1, 0), 0.0)
-//                        .build()
-//        );
-
         drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(-67, -1, 0))
-                        .forward(20)
+                drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
+                        .splineToSplineHeading(new Pose2d(70, 80, 3.14),0)
                         .build()
         );
 
-        drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(-47, -1, 0))
-                        .splineToLinearHeading( new Pose2d(-7,20, 0), 0.0)
-                        .build()
-        );
-
-        drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(-7, 20, 0))
-                        .splineToLinearHeading( new Pose2d(-47,-1, 0), 0.0)
-                        .build()
-        );
 
 //        //TODO Power Shot Position A----------------------------------------------------------------------------------------
 //
@@ -290,6 +275,7 @@ public class AutonomousOpenCV5 extends LinearOpMode
 //            claw.setPosition(0.88);
 //            opModeIsActive();
 //        }
+
         //TODO Position C----------------------------------------------------------------------------------------
 
 //        //Shoot rings
@@ -789,5 +775,19 @@ public class AutonomousOpenCV5 extends LinearOpMode
         shooterLeft = hardwareMap.dcMotor.get("flywheelleft");
         shooterRight = hardwareMap.dcMotor.get("flywheelright");
 
+    }
+
+    public TrajectoryVelocityConstraint overideVel(int transVel, int angVel){
+        TrajectoryVelocityConstraint velConstraint = new MinVelocityConstraint(Arrays.asList(
+                new TranslationalVelocityConstraint(transVel),
+                new AngularVelocityConstraint(angVel)
+        ));
+
+        return velConstraint;
+    }
+
+    public TrajectoryAccelerationConstraint overideAccel(int accel){
+        TrajectoryAccelerationConstraint accelConstraint = new ProfileAccelerationConstraint(accel);
+        return accelConstraint;
     }
 }

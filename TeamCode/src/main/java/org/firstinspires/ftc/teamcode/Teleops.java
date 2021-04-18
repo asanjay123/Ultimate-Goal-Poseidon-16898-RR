@@ -140,13 +140,13 @@ public class Teleops extends OpMode {
         //Wobble Arm controls
         if (gamepad1.right_bumper)
         {
-            wobble.setTargetPosition(initPos-150);
-            wobble.setPower(0.2);
+            wobble.setTargetPosition(initPos-80);
+            wobble.setPower(0.05);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         if (gamepad1.left_bumper){
             wobble.setTargetPosition(initPos);
-            wobble.setPower(-0.2);
+            wobble.setPower(-0.05);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         }
