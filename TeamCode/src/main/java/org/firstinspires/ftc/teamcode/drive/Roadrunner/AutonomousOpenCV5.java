@@ -118,21 +118,33 @@ public class AutonomousOpenCV5 extends LinearOpMode
         telemetry.update();
         waitForStart();
 
+//        drive.followTrajectory(
+//                drive.trajectoryBuilder(new Pose2d(-47, -1, 0))
+//                        .splineToLinearHeading( new Pose2d(23,-1, 0), 0.0)
+//                        .build()
+//        );
+//
+//        drive.followTrajectory(
+//                drive.trajectoryBuilder(new Pose2d(23, -1, 0))
+//                        .splineToLinearHeading( new Pose2d(-47,-1, 0), 0.0)
+//                        .build()
+//        );
+
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(-67, -1, 0))
-                        .forward(30)
+                        .forward(20)
                         .build()
         );
 
         drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(-37, -1, 0))
-                        .splineToLinearHeading( new Pose2d(0,60, 0), 0.0)
+                drive.trajectoryBuilder(new Pose2d(-47, -1, 0))
+                        .splineToLinearHeading( new Pose2d(-7,20, 0), 0.0)
                         .build()
         );
 
         drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(0, 60, 0))
-                        .splineToLinearHeading( new Pose2d(-37,-1, 3.14), 0.0)
+                drive.trajectoryBuilder(new Pose2d(-7, 20, 0))
+                        .splineToLinearHeading( new Pose2d(-47,-1, 0), 0.0)
                         .build()
         );
 

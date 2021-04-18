@@ -51,6 +51,8 @@ public class Teleops extends OpMode {
         initPos = wobble.getCurrentPosition();
         wobble.getCurrentPosition();
         telemetry.addData("Position: ", wobble.getCurrentPosition());
+        telemetry.update();
+
         flicker = hardwareMap.servo.get("pusher");
         claw = hardwareMap.servo.get("clamp");
         stack = hardwareMap.servo.get("stack");
@@ -99,14 +101,11 @@ public class Teleops extends OpMode {
     @Override
     public void loop() {
 
-        telemetry.addData("wall1 pos: ", wall1.getPosition());
-        telemetry.update();
-
-        telemetry.addData("wall2 pos: ", wall2.getPosition());
-        telemetry.update();
-
 //        telemetry.addData("Nitro: ", (nitro == 1) ? "High":( (nitro==2) ? "Medium":"Low"));
 //        telemetry.update();
+
+        telemetry.addData("Position: ", wobble.getCurrentPosition());
+        telemetry.update();
 
         //Intake controls
         if (gamepad1.dpad_up) {
@@ -117,7 +116,7 @@ public class Teleops extends OpMode {
         }
 
         //Drive controls
-        if (!powerShotTurn && !powerShotTurn){
+        if (!moving && !powerShotTurn){
             drive = gamepad1.left_stick_y;
             strafe = -gamepad1.left_stick_x;
             rotate = gamepad1.right_stick_x;
@@ -139,14 +138,15 @@ public class Teleops extends OpMode {
         }
 
         //Wobble Arm controls
-        if (gamepad1.right_bumper){
-            wobble.setTargetPosition(initPos-700);
-            wobble.setPower(-0.3);
+        if (gamepad1.right_bumper)
+        {
+            wobble.setTargetPosition(initPos-150);
+            wobble.setPower(0.2);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         if (gamepad1.left_bumper){
             wobble.setTargetPosition(initPos);
-            wobble.setPower(0.3);
+            wobble.setPower(-0.2);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         }
