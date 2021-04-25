@@ -114,6 +114,9 @@ public class Teleops extends OpMode {
         if (gamepad1.dpad_down) {
             intake.setPower(0);
         }
+        if (gamepad1.dpad_right) {
+            intake.setPower(1);
+        }
 
         //Drive controls
         if (!moving && !powerShotTurn){
@@ -129,7 +132,7 @@ public class Teleops extends OpMode {
             nitro = 1;
         }
         else {
-            if (gamepad1.y) {
+            if (gamepad1.left_trigger > 0) {
                 nitro = 4;
             }
             else {
@@ -140,16 +143,17 @@ public class Teleops extends OpMode {
         //Wobble Arm controls
         if (gamepad1.right_bumper)
         {
-            wobble.setTargetPosition(initPos-80);
-            wobble.setPower(0.05);
+            wobble.setTargetPosition(initPos-200);
+            wobble.setPower(0.2);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         if (gamepad1.left_bumper){
-            wobble.setTargetPosition(initPos);
-            wobble.setPower(-0.05);
+            wobble.setTargetPosition(initPos-15);
+            wobble.setPower(-0.1);
             wobble.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         }
+
 
         //Claw controls
         if (gamepad2.x)
@@ -221,7 +225,7 @@ public class Teleops extends OpMode {
             //turn left
             rotate = -power;
             motorPower();
-            sleep(time);
+            sleep(time-30);
             rotate = 0;
             motorPower();
 
@@ -250,14 +254,14 @@ public class Teleops extends OpMode {
                     {
                         flicker.setPosition(0.33);
                         try {
-                            Thread.sleep(600);
+                            Thread.sleep(250);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
 
                         flicker.setPosition(0.11);
                         try {
-                            Thread.sleep(600);
+                            Thread.sleep(250);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -293,7 +297,7 @@ public class Teleops extends OpMode {
         }
 
         //stack servo controls
-        if (gamepad1.left_trigger > 0) {
+        if (gamepad2.left_trigger > 0) {
             stack.setPosition(0.70);
         }
         else {
