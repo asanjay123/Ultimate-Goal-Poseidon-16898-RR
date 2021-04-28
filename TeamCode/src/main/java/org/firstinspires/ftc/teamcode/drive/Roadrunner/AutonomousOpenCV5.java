@@ -126,10 +126,8 @@ public class AutonomousOpenCV5 extends LinearOpMode
         telemetry.update();
         waitForStart();
 
-
-
 //        //TODO Power Shot Position A----------------------------------------------------------------------------------------
-//
+
         drive.setPoseEstimate(new Pose2d(-60, -16, 0));
 
             shooterLeft.setPower(power);
@@ -138,14 +136,14 @@ public class AutonomousOpenCV5 extends LinearOpMode
         //Go forward by strafing
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                        .strafeRight(85)
+                        .strafeLeft(85)
                         .build()
         );
 
         // Go back
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                        .back(30)
+                        .forward(30)
                         .build()
         );
 
@@ -159,14 +157,14 @@ public class AutonomousOpenCV5 extends LinearOpMode
 
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(20, 16, 0))
-                        .strafeLeft(60)
+                        .strafeRight(60)
                         .build()
         );
 
         // Go forward
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(-60, 16, 0))
-                        .forward(60)
+                        .back(60)
                         .build()
         );
 
@@ -199,7 +197,7 @@ public class AutonomousOpenCV5 extends LinearOpMode
         //Move into ring on the way to wobble
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(-60, 16, 3.14))
-                        .back(50)
+                        .forward(50)
                         .build()
         );
 
@@ -211,8 +209,6 @@ public class AutonomousOpenCV5 extends LinearOpMode
 
         claw.setPosition(0.5);
         sleep(300);
-
-
 
         drive.turn(-Math.toRadians(140));
         claw.setPosition(0.5);

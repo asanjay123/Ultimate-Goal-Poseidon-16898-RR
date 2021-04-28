@@ -75,8 +75,6 @@ public class Teleops extends OpMode {
         wall1.setPosition(0.61);
         wall2.setPosition(0.15);
 
-
-
     }
 
     public void sleep(double waitTime){
