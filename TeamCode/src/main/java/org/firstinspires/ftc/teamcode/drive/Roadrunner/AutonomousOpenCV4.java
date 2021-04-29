@@ -63,7 +63,7 @@ public class AutonomousOpenCV4 extends LinearOpMode
 
     int initPos;
 
-    double power = 20;
+    double power = 1;
     double shot = 0.9;
 
     /*     pi
