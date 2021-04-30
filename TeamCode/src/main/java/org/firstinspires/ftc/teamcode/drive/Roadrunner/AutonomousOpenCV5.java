@@ -68,6 +68,8 @@ public class AutonomousOpenCV5 extends LinearOpMode
     Servo flicker;
     Servo claw;
     Servo stack;
+    Servo wall1;
+    Servo wall2;
 
     int initPos;
 
@@ -122,6 +124,9 @@ public class AutonomousOpenCV5 extends LinearOpMode
         claw.setPosition(0.88);
         flicker.setPosition(0.11);
 
+        wall1.setPosition(0.61);
+        wall2.setPosition(0.15);
+
         telemetry.addLine("Ready@");
         telemetry.update();
         waitForStart();
@@ -136,18 +141,29 @@ public class AutonomousOpenCV5 extends LinearOpMode
         //Drive towards power shot
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(-60, -15, 0))
-                        .strafeLeft(65)
+                        .strafeLeft(40)
                         .build()
         );
 
         //drive forward
         drive.followTrajectory(
-                drive.trajectoryBuilder(new Pose2d(-60, 50, 0))
-                        .forward(75)
+                drive.trajectoryBuilder(new Pose2d(-60, 25, 0))
+                        .forward(80)
                         .build()
         );
 
+        //shoot right
+        flicker.setPosition(0.33);
+        sleep(350);
+        flicker.setPosition(0.11);
+        sleep(300);
+        stack.setPosition(0.7);
+        sleep(300);
+        stack.setPosition(0.97);
+        sleep(300);
+
         //shoot middle
+        drive.turn(-Math.toRadians(18));
         flicker.setPosition(0.33);
         sleep(350);
         flicker.setPosition(0.11);
@@ -158,18 +174,7 @@ public class AutonomousOpenCV5 extends LinearOpMode
         sleep(300);
 
         //shoot left
-        //drive.turn(-Math.toRadians(20));
-        flicker.setPosition(0.33);
-        sleep(350);
-        flicker.setPosition(0.11);
-        sleep(300);
-        stack.setPosition(0.7);
-        sleep(300);
-        stack.setPosition(0.97);
-        sleep(300);
-
-        //shoot right
-        //drive.turn(Math.toRadians(25));
+        drive.turn(-Math.toRadians(18));
         flicker.setPosition(0.33);
         sleep(350);
         flicker.setPosition(0.11);
@@ -207,12 +212,11 @@ public class AutonomousOpenCV5 extends LinearOpMode
         claw.setPosition(0.5);
 
         //pick up second wobble
-
-        drive.turn(Math.toRadians(100));
+        drive.turn(Math.toRadians(115));
 
         drive.followTrajectory(
                 drive.trajectoryBuilder(new Pose2d(10, 38, 0))
-                        .back(40)
+                        .back(48)
                         .build()
         );
 
@@ -838,7 +842,8 @@ public class AutonomousOpenCV5 extends LinearOpMode
         stack = hardwareMap.servo.get("stack");
         shooterLeft = hardwareMap.dcMotor.get("flywheelleft");
         shooterRight = hardwareMap.dcMotor.get("flywheelright");
-
+        wall1 = hardwareMap.servo.get("wall1");
+        wall2 = hardwareMap.servo.get("wall2");
     }
 
     public TrajectoryVelocityConstraint overideVel(int transVel, int angVel){
