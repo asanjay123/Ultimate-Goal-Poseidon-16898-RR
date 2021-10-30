@@ -91,6 +91,12 @@ public class AutonomousPositionA extends LinearOpMode{
                         .build()
         );
 
+        drive.followTrajectory(
+                drive.trajectoryBuilder(new Pose2d(-10, 62, 0))
+                        .forward(10)
+                        .build()
+        );
+
         sleep(300);
         claw.setPosition(0.88);
 
